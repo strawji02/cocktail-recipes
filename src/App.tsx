@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "styled-components";
+import BaseList from "./component/BaseList";
+import RecommendedDrinks from "./component/RecommendedDrinks";
+import Search from "./component/Search";
+import TasteList from "./component/TasteList";
+
+interface RecommendedDrinksProps {
+  color: string;
+}
+
+interface BaseListProps {}
+
+interface SearchProps {}
+
+interface TasteListProps {}
+
+const StyledRecommendedDrinks = styled(
+  RecommendedDrinks
+)<RecommendedDrinksProps>`
+  color: ${(props) => props.color};
+`;
+
+const StyledBaseList = styled(BaseList)<BaseListProps>``;
+const StyledSearch = styled(Search)<SearchProps>``;
+const StyledTasteList = styled(TasteList)<TasteListProps>``;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>칵테일 레시피</h1>
+      <StyledSearch></StyledSearch>
+      <StyledRecommendedDrinks color="#ffffff"></StyledRecommendedDrinks>
+      <StyledBaseList></StyledBaseList>
+      <StyledTasteList></StyledTasteList>
     </div>
   );
 }
