@@ -1,7 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const SearchWindow = styled.input``;
+const SearchWindow = styled.input`
+  border-style: none;
+  border-bottom-style: solid;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+`;
 
 const Search = () => {
   return (
