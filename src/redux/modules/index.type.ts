@@ -1,7 +1,7 @@
-import * as actions from "./actions";
+import * as actions from "./ingredients/actions";
 import { ActionType } from "typesafe-actions";
-import { Ingredients } from "../../../api/cocktails";
-import { AsyncState } from "../../lib/reducerUtils";
+import { Ingredients } from "../api/cocktails";
+import { AsyncState } from "../lib/reducerUtils";
 
 export type IngredientsAction = ActionType<typeof actions>;
 

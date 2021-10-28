@@ -1,5 +1,5 @@
 import { createReducer } from "typesafe-actions";
-import { IngredientsAction, IngredientsState } from "./index.type";
+import { IngredientsAction, IngredientsState } from "../index.type";
 import {
   GET_INGREDIENTS,
   GET_INGREDIENTS_SUCCESS,
