@@ -8,23 +8,23 @@ import { applyMiddleware, createStore } from "redux";
 import createSagaMiddleware from "@redux-saga/core";
 import rootReducer, { rootSaga } from "./redux/modules/index";
 import { composeWithDevTools } from "redux-devtools-extension";
-import persistStore from "redux-persist/es/persistStore";
-import { PersistGate } from "redux-persist/integration/react";
+// import persistStore from "redux-persist/es/persistStore";
+// import { PersistGate } from "redux-persist/integration/react";
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore<any, any, any, any>( // reducer의 state, action, devtools
   rootReducer,
   composeWithDevTools(applyMiddleware(sagaMiddleware))
 );
-const persistor = persistStore(store);
+// const persistor = persistStore(store);
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <App />
-      </PersistGate>
+      {/* <PersistGate loading={null} persistor={persistor}> */}
+      <App />
+      {/* </PersistGate> */}
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

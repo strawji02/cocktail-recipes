@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import BaseList from "./BaseList";
 import BeverageList from "./BeverageList";
+import CocktailList from "./CocktailList";
 
 const IngredientsListContainer = () => {
   const [includedDrinks, setIncludedDrinks] = useState({
     base: [],
     beverage: [],
   });
-  const [drinksList, setDrinksList] = useState(Array);
+  const [drinksList, setDrinksList] = useState<Array<number>>([]);
   useEffect(() => {
     const allBaseDrinkList = includedDrinks.base.map(
       (ingredients: { id: number; includedDrinks: Array<number> }) =>
@@ -45,8 +46,9 @@ const IngredientsListContainer = () => {
         includedDrinks={includedDrinks}
         setIncludedDrinks={setIncludedDrinks}
       ></BeverageList>
-
-      <div>{drinksList}</div>
+      {drinksList.length !== 0 && (
+        <CocktailList drinksList={drinksList}></CocktailList>
+      )}
     </div>
   );
 };
