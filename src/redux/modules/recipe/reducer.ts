@@ -7,7 +7,7 @@ const initialState: RecipeState = {
   recipe: asyncState.initial(),
 };
 
-const recepies = createReducer<RecipeState, RecipeAction>(initialState, {
+const recepie = createReducer<RecipeState, RecipeAction>(initialState, {
   [GET_RECIPIE]: (state) => ({
     ...state,
     recipe: asyncState.load(),
@@ -24,4 +24,4 @@ const recepies = createReducer<RecipeState, RecipeAction>(initialState, {
   }),
 });
 
-export default recepies;
+export default recepie;

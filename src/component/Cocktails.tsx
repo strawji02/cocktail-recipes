@@ -11,7 +11,7 @@ interface Props {
 const Cocktails = ({ drinksList }: Props) => {
   // redux
   const { data, loading, error } = useSelector(
-    (state: RootState) => state.recipes.recipe
+    (state: RootState) => state.recipe.recipe
   );
   const dispatch = useDispatch();
   //////

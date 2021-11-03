@@ -4,14 +4,14 @@ import { combineReducers } from "redux";
 // import storage from "redux-persist/lib/storage";
 // import cocktails, { cocktailsSaga } from "./legacy/loadcocktails";
 import ingredients, { ingredientsSaga } from "./ingredients";
-import recipes, { recepieSaga } from "./recipe";
+import recipe, { recepieSaga } from "./recipe";
 
 // const persistConfig = {
 //   key: "root",
 //   storage,
 //   blacklsit: [],
 // };
-const rootReducer = combineReducers({ ingredients, recipes });
+const rootReducer = combineReducers({ ingredients, recipe });
 export function* rootSaga() {
   yield all([ingredientsSaga(), recepieSaga()]);
   // yield all([cocktailsSaga()]);
