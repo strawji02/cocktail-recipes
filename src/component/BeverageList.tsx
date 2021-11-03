@@ -16,7 +16,8 @@ interface Props {
   };
   setIncludedDrinks: Dispatch<SetStateAction<any>>;
 }
-const BaseList = ({ includedDrinks, setIncludedDrinks }: Props) => {
+
+const BeverageList = ({ includedDrinks, setIncludedDrinks }: Props) => {
   //redux
   const { data, loading, error } = useSelector(
     (state: RootState) => state.ingredients.ingredients
@@ -31,36 +32,42 @@ const BaseList = ({ includedDrinks, setIncludedDrinks }: Props) => {
     (e: React.MouseEvent<HTMLInputElement>) => {
       const target = e.target as HTMLInputElement;
       const dID = parseInt(target.id);
-      const drinks = data?.base[dID].includedDrinks;
+      const drinks = data?.beverage[dID].includedDrinks;
       if (target.checked) {
         setIncludedDrinks({
           ...includedDrinks,
-          base: [...includedDrinks.base, { id: dID, includedDrinks: drinks }],
+          beverage: [
+            ...includedDrinks.beverage,
+            { id: dID, includedDrinks: drinks },
+          ],
         });
       } else {
         setIncludedDrinks({
           ...includedDrinks,
-          base: includedDrinks.base.filter((base) => base.id !== dID),
+          beverage: includedDrinks.beverage.filter(
+            (beverage) => beverage.id !== dID
+          ),
         });
       }
     },
-    [data?.base, includedDrinks, setIncludedDrinks]
+    [data?.beverage, includedDrinks, setIncludedDrinks]
   );
 
   if (loading) return <div>로딩중...</div>;
   if (error) return <div>에러 발생</div>;
   if (!data) return <div>NO DATA</div>;
+
   return (
     <div>
       <ul>
-        {data.base.map((ingredients) => (
+        {data.beverage.map((ingredients) => (
           <li key={ingredients.id}>
             <input
               type="checkbox"
               onClick={onClick}
               id={ingredients.id.toString()}
             />
-            {ingredients.baseName}
+            {ingredients.beverageName}
           </li>
         ))}
       </ul>
@@ -68,4 +75,4 @@ const BaseList = ({ includedDrinks, setIncludedDrinks }: Props) => {
   );
 };
 
-export default BaseList;
+export default BeverageList;
