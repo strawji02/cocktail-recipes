@@ -5,15 +5,16 @@ import { combineReducers } from "redux";
 // import cocktails, { cocktailsSaga } from "./legacy/loadcocktails";
 import ingredients, { ingredientsSaga } from "./ingredients";
 import recipe, { recepieSaga } from "./recipe";
+import recipeList, { recipeListSaga } from "./recipeList";
 
 // const persistConfig = {
 //   key: "root",
 //   storage,
 //   blacklsit: [],
 // };
-const rootReducer = combineReducers({ ingredients, recipe });
+const rootReducer = combineReducers({ ingredients, recipe, recipeList });
 export function* rootSaga() {
-  yield all([ingredientsSaga(), recepieSaga()]);
+  yield all([ingredientsSaga(), recepieSaga(), recipeListSaga()]);
   // yield all([cocktailsSaga()]);
 }
 
