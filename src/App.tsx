@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import BaseList from "./component/BaseList";
 import RecommendedDrinks from "./component/RecommendedDrinks";
 import Search from "./component/Search";
-import TasteList from "./component/BeverageList";
+import IngredientsListContainer from "./component/IngredientsListContainer";
 
 const StyledTitle = styled.h1`
   grid-column: 3/5;
@@ -15,19 +14,14 @@ const StyledSearch = styled.div`
   grid-column: 3/5;
   grid-row: 2/3;
 `;
-const StyledRecommendedDrinks = styled.div`
+const StyledRecommende = styled.div`
   grid-column: 2/4;
   grid-row: 3/5;
 `;
-const StyledBaseList = styled.div`
+const StyledListContainer = styled.div`
   display: grid;
   grid-column: 4/6;
-  grid-row: 4/5;
-`;
-const StyledTasteList = styled.div`
-  display: grid;
-  grid-column: 4/6;
-  grid-row: 3/4;
+  grid-row: 3/5;
 `;
 const Container = styled.div`
   display: grid;
@@ -45,15 +39,12 @@ function App() {
       <StyledSearch>
         <Search></Search>
       </StyledSearch>
-      <StyledRecommendedDrinks>
+      <StyledRecommende>
         <RecommendedDrinks></RecommendedDrinks>
-      </StyledRecommendedDrinks>
-      <StyledBaseList>
-        <BaseList></BaseList>
-      </StyledBaseList>
-      <StyledTasteList>
-        <TasteList></TasteList>
-      </StyledTasteList>
+      </StyledRecommende>
+      <StyledListContainer>
+        <IngredientsListContainer></IngredientsListContainer>
+      </StyledListContainer>
     </Container>
   );
 }
