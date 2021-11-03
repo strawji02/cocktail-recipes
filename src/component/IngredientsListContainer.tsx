@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BaseList from "./BaseList";
 import BeverageList from "./BeverageList";
-import CocktailList from "./CocktailList";
+import Cocktais from "./Cocktails";
 
 const IngredientsListContainer = () => {
   const [includedDrinks, setIncludedDrinks] = useState({
@@ -35,7 +35,6 @@ const IngredientsListContainer = () => {
     setDrinksList(uniqueDrinkList);
   }, [includedDrinks.base, includedDrinks.beverage]);
 
-  //cocktailList 컴포넌트 추가하기
   return (
     <div>
       <BaseList
@@ -46,9 +45,9 @@ const IngredientsListContainer = () => {
         includedDrinks={includedDrinks}
         setIncludedDrinks={setIncludedDrinks}
       ></BeverageList>
-      {drinksList.length !== 0 && (
-        <CocktailList drinksList={drinksList}></CocktailList>
-      )}
+      {/* {drinksList.length !== 0 && 
+      } */}
+      <Cocktais drinksList={drinksList}></Cocktais>
     </div>
   );
 };

@@ -16,19 +16,17 @@ export type RecipeState = {
 };
 
 export interface Recipe {
-  id?: number;
-  cocktailName?: string;
-  ingredient?: Ingredient[];
-  ingredientAmountOZ?: string[];
-  ingredientAmountML?: string[];
-  mixing?: string;
+  id: number;
+  cocktailName: string;
+  ingredient: Ingredient[];
+  ingredientAmountOZ: string[];
+  ingredientAmountML: string[];
+  mixing: string;
 }
 
 export interface Ingredient {
-  base?: number;
-  liquor?: number;
-  beverage?: number;
-  other?: number;
+  id: number;
+  ingredientType: number;
 }
 
 export interface Ingredients {

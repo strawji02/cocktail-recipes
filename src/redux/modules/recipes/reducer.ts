@@ -16,10 +16,12 @@ const recepies = createReducer<RecipeState, RecipeAction>(initialState, {
     ...state,
     recipe: asyncState.load(),
   }),
-  [GET_RECIPIES_SUCCESS]: (state, action) => ({
-    ...state,
-    recipe: asyncState.success(action.payload),
-  }),
+  [GET_RECIPIES_SUCCESS]: (state, action) => {
+    return {
+      ...state,
+      recipe: asyncState.success(action.payload),
+    };
+  },
   [GET_RECIPIES_ERROR]: (state, action) => ({
     ...state,
     recipe: asyncState.error(action.payload),
