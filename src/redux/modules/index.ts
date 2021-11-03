@@ -4,7 +4,7 @@ import { combineReducers } from "redux";
 // import storage from "redux-persist/lib/storage";
 // import cocktails, { cocktailsSaga } from "./legacy/loadcocktails";
 import ingredients, { ingredientsSaga } from "./ingredients";
-import recipes, { recepieSaga } from "./recipes";
+import recipes, { recepieSaga } from "./recipe";
 
 // const persistConfig = {
 //   key: "root",

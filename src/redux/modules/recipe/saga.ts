@@ -1,4 +1,4 @@
-import { getRecipiesAsync, GET_RECIPIES } from "./actions";
+import { getRecipiesAsync, GET_RECIPIE } from "./actions";
 import { getRecipe } from "../../api/cocktails";
 import { Recipe } from "../index.type";
 import { call, put, takeEvery } from "redux-saga/effects";
@@ -13,5 +13,5 @@ function* getRecipeSaga(action: ReturnType<typeof getRecipiesAsync.request>) {
 }
 
 export function* recepieSaga() {
-  yield takeEvery(GET_RECIPIES, getRecipeSaga);
+  yield takeEvery(GET_RECIPIE, getRecipeSaga);
 }

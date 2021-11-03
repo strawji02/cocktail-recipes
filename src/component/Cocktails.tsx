@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/modules";
 import { Recipe } from "../redux/modules/index.type";
-import { getRecipiesAsync } from "../redux/modules/recipes";
+import { getRecipiesAsync } from "../redux/modules/recipe";
 
 interface Props {
   drinksList: Array<number>;

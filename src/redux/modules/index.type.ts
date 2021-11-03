@@ -1,5 +1,5 @@
 import * as ingredientsActions from "./ingredients/actions";
-import * as recipeActions from "./recipes/actions";
+import * as recipeActions from "./recipe/actions";
 import { ActionType } from "typesafe-actions";
 import { AsyncState } from "../lib/reducerUtils";
 
