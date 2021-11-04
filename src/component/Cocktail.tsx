@@ -8,7 +8,6 @@ function Cocktail({ recipe }: Props) {
   return (
     <div>
       칵테일 : {recipe?.cocktailName}
-      <br />
       <ul>
         {recipe?.ingredient.map((ingredient, index) => (
           <li key={index}>

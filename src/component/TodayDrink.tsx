@@ -16,15 +16,20 @@ function TodayDrink({ drinkId }: Props) {
   const dispatch = useDispatch();
   //////
   const [recipe, setRecipe] = useState<Recipe>();
+  const [recipeLoaded, setRecipeLoaded] = useState(false);
 
   useEffect(() => {
+    setRecipeLoaded(false);
     dispatch(getRecipieAsync.request(drinkId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [drinkId]);
+
   useEffect(() => {
     if (!data) return;
+    setRecipeLoaded(true);
     setRecipe(data);
-  }, [data]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [recipeLoaded ? drinkId : data]);
 
   if (loading) return <div>로딩중...</div>;
   if (error) return <div>에러 발생</div>;

@@ -23,18 +23,18 @@ const RecommendedDrinks = () => {
   const { data, loading, error } = useSelector(
     (state: RootState) => state.recipeList
   );
+  //////
   useEffect(() => {
     dispatch(getRecipeListAsync.request(null));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  //////
 
   if (loading) return <div>로딩중...</div>;
   if (error) return <div>에러 발생</div>;
   if (!data) return <div>NO DATA</div>;
 
-  const randomDrinkId = (parseInt(date()) * 806) % data.length;
   // console.log(randomDrinkId);
+  const randomDrinkId = (parseInt(date()) * 806) % data.length;
 
   return (
     <div>
