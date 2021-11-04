@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/modules";
-import { Recipe } from "../redux/modules/index.type";
 import { getRecipeListAsync } from "../redux/modules/recipeList";
-import Cocktails from "./Cocktails";
+import TodayDrink from "./TodayDrink";
+
 const date = () => {
   const d = new Date();
   let month = `${d.getMonth() + 1}`;
@@ -29,8 +29,6 @@ const RecommendedDrinks = () => {
   }, []);
   //////
 
-  const [recipesList, setRecipesList] = useState<Recipe[]>([]);
-
   if (loading) return <div>로딩중...</div>;
   if (error) return <div>에러 발생</div>;
   if (!data) return <div>NO DATA</div>;
@@ -40,12 +38,7 @@ const RecommendedDrinks = () => {
 
   return (
     <div>
-      <Cocktails
-        drinksList={[randomDrinkId]}
-        recipesList={recipesList}
-        setRecipesList={setRecipesList}
-        key={1}
-      ></Cocktails>
+      <TodayDrink drinkId={randomDrinkId}></TodayDrink>
     </div>
   );
 };
