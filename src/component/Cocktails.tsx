@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/modules";
 import { Recipe } from "../redux/modules/index.type";
@@ -6,29 +6,34 @@ import { getRecipiesAsync } from "../redux/modules/recipe";
 
 interface Props {
   drinksList: Array<number>;
+  recipesList: Recipe[];
+  setRecipesList: Dispatch<SetStateAction<any>>;
 }
 
-const Cocktails = ({ drinksList }: Props) => {
+const Cocktails = ({ drinksList, recipesList, setRecipesList }: Props) => {
   // redux
   const { data, loading, error } = useSelector(
     (state: RootState) => state.recipe.recipe
   );
   const dispatch = useDispatch();
   //////
-  const [recipesList, setRecipesList] = useState<Recipe[]>([]);
 
-  useEffect(() => {
-    setRecipesList([]);
+  const callDispatch = useCallback(() => {
+    console.log("");
     drinksList.forEach((drinkId) => {
       dispatch(getRecipiesAsync.request(drinkId));
       console.log(drinkId);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [drinksList]);
 
   useEffect(() => {
+    setRecipesList([]);
+    callDispatch();
+  }, [callDispatch]);
+
+  useEffect(() => {
     if (!data) return;
-    setRecipesList((prevState) => [...prevState, data]);
+    setRecipesList((prevState: any) => [...prevState, data]);
   }, [data]);
 
   if (loading) return <div>로딩중...</div>;

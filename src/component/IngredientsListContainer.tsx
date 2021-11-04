@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Recipe } from "../redux/modules/index.type";
 import BaseList from "./BaseList";
 import BeverageList from "./BeverageList";
 import Cocktais from "./Cocktails";
@@ -9,6 +10,7 @@ const IngredientsListContainer = () => {
     beverage: [],
   });
   const [drinksList, setDrinksList] = useState<Array<number>>([]);
+  const [recipesList, setRecipesList] = useState<Recipe[]>([]);
   useEffect(() => {
     const allBaseDrinkList = includedDrinks.base.map(
       (ingredients: { id: number; includedDrinks: Array<number> }) =>
@@ -47,7 +49,12 @@ const IngredientsListContainer = () => {
       ></BeverageList>
       {/* {drinksList.length !== 0 && 
       } */}
-      <Cocktais drinksList={drinksList}></Cocktais>
+      <Cocktais
+        drinksList={drinksList}
+        recipesList={recipesList}
+        setRecipesList={setRecipesList}
+        key={2}
+      ></Cocktais>
     </div>
   );
 };
