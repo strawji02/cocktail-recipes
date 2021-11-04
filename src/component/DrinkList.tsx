@@ -17,10 +17,8 @@ const DrinkList = ({ drinksList }: Props) => {
   const dispatch = useDispatch();
   //////
   const [recipesList, setRecipesList] = useState<Recipe[]>([]);
-  const [recipesLoaded, setRecipesLoaded] = useState(false);
 
   useEffect(() => {
-    setRecipesLoaded(false);
     setRecipesList([]);
     drinksList.forEach((drinkId) => {
       dispatch(getRecipieAsync.request(drinkId));
@@ -31,13 +29,9 @@ const DrinkList = ({ drinksList }: Props) => {
   useEffect(() => {
     if (!data) return;
     if (drinksList.length === 0) return;
-    if (!recipesLoaded) {
-      console.log(recipesLoaded, data);
-      setRecipesList((prevState: any) => [...prevState, data]);
-    }
-    setRecipesLoaded(true);
+    setRecipesList((prevState: any) => [...prevState, data]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [recipesLoaded ? null : data]);
+  }, [data]);
 
   if (loading) return <div>로딩중...</div>;
   if (error) return <div>에러 발생</div>;
