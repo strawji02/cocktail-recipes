@@ -31,7 +31,6 @@ const Search = () => {
   const [filterdData, setFilterdData] = useState<Data[]>([]);
 
   useEffect(() => {
-    console.log(value);
     if (value.length !== 0) {
       setFilterdData(
         (data) =>
