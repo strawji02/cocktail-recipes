@@ -14,9 +14,15 @@ export type IngredientsState = {
 };
 export interface Ingredients {
   base: Base[];
-  liquor: Liquor[];
-  beverage: Beverage[];
-  other: Other[];
+  liquor: Base[];
+  beverage: Base[];
+  other: Base[];
+}
+
+export interface Base {
+  id: number;
+  name: string;
+  includedDrinks: number[];
 }
 
 export type RecipeAction = ActionType<typeof recipeActions>;
@@ -35,28 +41,4 @@ export interface Recipe {
 export interface Ingredient {
   id: number;
   ingredientType: number;
-}
-
-export interface Base {
-  id: number;
-  baseName: string;
-  includedDrinks: number[];
-}
-
-export interface Beverage {
-  id: number;
-  beverageName: string;
-  includedDrinks: number[];
-}
-
-export interface Liquor {
-  id: number;
-  liquorName: string;
-  includedDrinks: number[];
-}
-
-export interface Other {
-  id: number;
-  otherName: string;
-  includedDrinks: number[];
 }

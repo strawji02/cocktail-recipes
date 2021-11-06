@@ -67,7 +67,7 @@ const BeverageList = ({ includedDrinks, setIncludedDrinks }: Props) => {
               onClick={onClick}
               id={ingredients.id.toString()}
             />
-            {ingredients.beverageName}
+            {ingredients.name}
           </li>
         ))}
       </ul>
