@@ -1,16 +1,13 @@
 import {
   Backdrop,
   Box,
-  Dialog,
-  DialogContent,
-  DialogTitle,
   Fade,
   ListItem,
   ListItemButton,
   Modal,
   Typography,
 } from "@mui/material";
-import { TransitionProps } from "@mui/material/transitions";
+
 import React, { useState } from "react";
 import SearchModalCocktailList from "./SearchModalCocktailList";
 
@@ -65,24 +62,6 @@ function SearchList({ filterdData }: Props) {
           </ListItem>
         ))
       )}{" "}
-      {/* 
-        <Dialog
-          open={open}
-          TransitionComponent={Transition}
-          transitionDuration={200}
-          onClose={handleClose}
-        >
-          <DialogTitle>{drinksData.name}</DialogTitle>
-          <DialogContent>
-            {drinksData.includedDrinks ? (
-              <SearchModalCocktailList
-                drinksList={drinksData.includedDrinks}
-              ></SearchModalCocktailList>
-            ) : (
-              <div>error</div>
-            )}
-          </DialogContent>
-        </Dialog> */}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -93,7 +72,6 @@ function SearchList({ filterdData }: Props) {
         BackdropProps={{
           timeout: 500,
         }}
-        disableScrollLock={true}
       >
         <Fade in={open}>
           <Box sx={style}>
