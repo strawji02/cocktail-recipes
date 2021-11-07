@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import styled from "styled-components";
 import { RootState } from "../redux/modules";
 import * as Hangul from "hangul-js";
+import TextFiled from "@mui/material/TextField";
+import { List } from "@mui/material";
 import SearchList from "./SearchList";
 
-const SearchWindow = styled.input`
-  border-style: none;
-  border-bottom-style: solid;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 100%;
-`;
-
+// const StyledSarchList = styled(SearchList)`
+//   width: 100px;
+// `;
 interface Data {
   id: number;
   name: string;
@@ -62,13 +58,32 @@ const Search = () => {
 
   return (
     <div>
-      <SearchWindow
-        placeholder="아무거나 검색해보세요!"
+      <TextFiled
+        id="standard-basic"
+        label="아무거나 검색해보세요!"
+        fullWidth
+        margin="dense"
+        variant="standard"
         onChange={onChange}
         value={value}
-      ></SearchWindow>
+      ></TextFiled>
+      {/* <Menu open={false}></Menu> */}
       {value.length === 0 ? null : (
-        <SearchList filterdData={filterdData}></SearchList>
+        <List
+          sx={{
+            maxWidth: 360,
+            width: 1,
+            bgcolor: "background.paper",
+            position: "fixed",
+            zIndex: 10,
+            overflow: "auto",
+            maxHeight: 300,
+            backgroundColor: "#fafafa",
+            "& ListItem": { padding: 0 },
+          }}
+        >
+          <SearchList filterdData={filterdData}></SearchList>
+        </List>
       )}
     </div>
   );

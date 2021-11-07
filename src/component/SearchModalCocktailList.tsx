@@ -9,7 +9,7 @@ interface Props {
   drinksList: Array<number>;
 }
 
-const DrinkList = ({ drinksList }: Props) => {
+function SearchModalCocktailList({ drinksList }: Props) {
   // redux
   const { data, loading, error } = useSelector(
     (state: RootState) => state.recipe.recipe
@@ -21,6 +21,7 @@ const DrinkList = ({ drinksList }: Props) => {
   useEffect(() => {
     setRecipesList([]);
     drinksList.forEach((drinkId) => {
+      console.log(drinkId);
       dispatch(getRecipieAsync.request(drinkId));
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -28,6 +29,7 @@ const DrinkList = ({ drinksList }: Props) => {
 
   useEffect(() => {
     if (!data) return;
+    if (loading) return;
     if (drinksList.length === 0) return;
     setRecipesList((prevState: any) => [...prevState, data]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -44,14 +46,25 @@ const DrinkList = ({ drinksList }: Props) => {
   return (
     <div>
       <ul>
-        {recipesList.map((recipe) => (
-          <li key={recipe.id}>
+        {recipesList.map((recipe, index) => (
+          <li key={`recipe.${recipe.id}:${recipe.cocktailName}`}>
             <Cocktail recipe={recipe}></Cocktail>
+            {/* <div>
+              칵테일 : {recipe?.cocktailName}
+              <ul>
+                {recipe?.ingredient.map((ingredient, index) => (
+                  <li key={index}>
+                    {ingredient.id}, {ingredient.ingredientType} :{" "}
+                    {recipe.ingredientAmountOZ[index]}
+                  </li>
+                ))}
+              </ul>
+            </div> */}
           </li>
         ))}
       </ul>
     </div>
   );
-};
+}
 
-export default DrinkList;
+export default SearchModalCocktailList;

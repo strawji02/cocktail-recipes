@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import BaseList from "./BaseList";
-import BeverageList from "./BeverageList";
 import DrinkList from "./DrinkList";
+import IngredientsList from "./IngredientsList";
 
 const IngredientsListContainer = () => {
   const [includedDrinks, setIncludedDrinks] = useState({
@@ -45,14 +44,10 @@ const IngredientsListContainer = () => {
 
   return (
     <div>
-      <BaseList
+      <IngredientsList
         includedDrinks={includedDrinks}
         setIncludedDrinks={setIncludedDrinks}
-      ></BaseList>
-      <BeverageList
-        includedDrinks={includedDrinks}
-        setIncludedDrinks={setIncludedDrinks}
-      ></BeverageList>
+      ></IngredientsList>
       {/* {drinksList.length !== 0 && 
       } */}
       <DrinkList drinksList={drinksList} key={2}></DrinkList>

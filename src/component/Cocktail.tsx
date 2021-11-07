@@ -10,7 +10,7 @@ function Cocktail({ recipe }: Props) {
       칵테일 : {recipe?.cocktailName}
       <ul>
         {recipe?.ingredient.map((ingredient, index) => (
-          <li key={index}>
+          <li key={`ingredient.${ingredient.id}.${ingredient.ingredientType}`}>
             {ingredient.id}, {ingredient.ingredientType} :{" "}
             {recipe.ingredientAmountOZ[index]}
           </li>
