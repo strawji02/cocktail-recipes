@@ -1,12 +1,14 @@
 import {
-  Button,
+  Backdrop,
+  Box,
   Dialog,
-  DialogActions,
   DialogContent,
   DialogTitle,
+  Fade,
   ListItem,
   ListItemButton,
-  Slide,
+  Modal,
+  Typography,
 } from "@mui/material";
 import { TransitionProps } from "@mui/material/transitions";
 import React, { useState } from "react";
@@ -22,14 +24,18 @@ interface Props {
   filterdData: Data[];
 }
 
-const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement<any, any>;
-  },
-  ref: React.Ref<unknown>
-) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+const style = {
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  maxHeight: 300,
+  overflow: "scroll",
+  p: 4,
+};
 
 function SearchList({ filterdData }: Props) {
   const [open, setOpen] = useState(false);
@@ -39,7 +45,6 @@ function SearchList({ filterdData }: Props) {
     setOpen(true);
   };
   const handleClose = () => {
-    setDrinksData({});
     setOpen(false);
   };
 
@@ -59,14 +64,13 @@ function SearchList({ filterdData }: Props) {
             </ListItemButton>
           </ListItem>
         ))
-      )}
-      {open ? (
+      )}{" "}
+      {/* 
         <Dialog
           open={open}
           TransitionComponent={Transition}
-          keepMounted
+          transitionDuration={200}
           onClose={handleClose}
-          aria-describedby="alert-dialog-slide-description"
         >
           <DialogTitle>{drinksData.name}</DialogTitle>
           <DialogContent>
@@ -78,12 +82,34 @@ function SearchList({ filterdData }: Props) {
               <div>error</div>
             )}
           </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose}>Disagree</Button>
-            <Button onClick={handleClose}>Agree</Button>
-          </DialogActions>
-        </Dialog>
-      ) : null}
+        </Dialog> */}
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+        disableScrollLock={true}
+      >
+        <Fade in={open}>
+          <Box sx={style}>
+            <Typography id="drink-name">{drinksData.name}</Typography>
+            <Typography id="drink-list" sx={{ mt: 2 }}>
+              {drinksData.includedDrinks ? (
+                <SearchModalCocktailList
+                  drinksList={drinksData.includedDrinks}
+                ></SearchModalCocktailList>
+              ) : (
+                <div>error</div>
+              )}
+            </Typography>
+          </Box>
+        </Fade>
+      </Modal>
     </div>
   );
 }

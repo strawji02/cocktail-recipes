@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux/modules";
 import * as Hangul from "hangul-js";
 import TextFiled from "@mui/material/TextField";
-import { List } from "@mui/material";
+import { ClickAwayListener, List } from "@mui/material";
 import SearchList from "./SearchList";
 
 // const StyledSarchList = styled(SearchList)`
@@ -22,6 +22,16 @@ const Search = () => {
     (state: RootState) => state.ingredients.ingredients
   );
   //////
+  const [open, setOpen] = useState(false);
+  const anchorRef = React.useRef<HTMLDivElement>(null);
+
+  const handleClose = (event: Event | React.SyntheticEvent) => {
+    if (anchorRef.current?.contains(event.target as HTMLElement)) {
+      return;
+    }
+    console.log("false");
+    setOpen(false);
+  };
 
   const [value, setValue] = useState("");
   const [filterdData, setFilterdData] = useState<Data[]>([]);
@@ -54,36 +64,47 @@ const Search = () => {
 
   const onChange = (e: any) => {
     setValue((value) => (value = e.target.value));
+    if (e.target.value !== 0) setOpen(true);
+  };
+  const onClick = (e: any) => {
+    console.log("true");
+    setOpen((d) => (d = true));
   };
 
   return (
     <div>
       <TextFiled
+        ref={anchorRef}
         id="standard-basic"
         label="아무거나 검색해보세요!"
         fullWidth
         margin="dense"
         variant="standard"
         onChange={onChange}
+        onClick={onClick}
         value={value}
       ></TextFiled>
-      {/* <Menu open={false}></Menu> */}
       {value.length === 0 ? null : (
-        <List
-          sx={{
-            maxWidth: 360,
-            width: 1,
-            bgcolor: "background.paper",
-            position: "fixed",
-            zIndex: 10,
-            overflow: "auto",
-            maxHeight: 300,
-            backgroundColor: "#fafafa",
-            "& ListItem": { padding: 0 },
-          }}
-        >
-          <SearchList filterdData={filterdData}></SearchList>
-        </List>
+        <ClickAwayListener onClickAway={handleClose}>
+          {open ? (
+            <List
+              sx={{
+                maxWidth: 360,
+                width: 1,
+                bgcolor: "background.paper",
+                position: "absolute",
+                zIndex: 0,
+                overflow: "auto",
+                maxHeight: 300,
+                backgroundColor: "#fafafa",
+              }}
+            >
+              <SearchList filterdData={filterdData}></SearchList>
+            </List>
+          ) : (
+            <div></div>
+          )}
+        </ClickAwayListener>
       )}
     </div>
   );
