@@ -38,6 +38,7 @@ function SearchModalCocktailList({ drinksList }: Props) {
   useEffect(() => {
     console.log(recipesList, drinksList);
     if (recipesList.length === drinksList.length) dispatch(recipeInit(null));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipesList]);
 
   if (loading) return <div>로딩중...</div>;
@@ -49,17 +50,6 @@ function SearchModalCocktailList({ drinksList }: Props) {
         {recipesList.map((recipe, index) => (
           <li key={`recipe.${recipe.id}:${recipe.cocktailName}`}>
             <Cocktail recipe={recipe}></Cocktail>
-            {/* <div>
-              칵테일 : {recipe?.cocktailName}
-              <ul>
-                {recipe?.ingredient.map((ingredient, index) => (
-                  <li key={index}>
-                    {ingredient.id}, {ingredient.ingredientType} :{" "}
-                    {recipe.ingredientAmountOZ[index]}
-                  </li>
-                ))}
-              </ul>
-            </div> */}
           </li>
         ))}
       </ul>

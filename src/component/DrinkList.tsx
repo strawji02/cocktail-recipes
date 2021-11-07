@@ -36,6 +36,7 @@ const DrinkList = ({ drinksList }: Props) => {
   useEffect(() => {
     console.log(recipesList, drinksList);
     if (recipesList.length === drinksList.length) dispatch(recipeInit(null));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipesList]);
 
   if (loading) return <div>로딩중...</div>;

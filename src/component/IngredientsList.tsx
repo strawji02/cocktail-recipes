@@ -51,12 +51,14 @@ function IngredientsList({ includedDrinks, setIncludedDrinks }: Props) {
     (e: React.MouseEvent<HTMLInputElement>) => {
       onClickUtil(e, "base");
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [data?.base, includedDrinks]
   );
   const onClickBeverage = useCallback(
     (e: React.MouseEvent<HTMLInputElement>) => {
       onClickUtil(e, "beverage");
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [data?.beverage, includedDrinks]
   );
 

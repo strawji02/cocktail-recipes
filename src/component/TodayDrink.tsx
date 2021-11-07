@@ -36,6 +36,7 @@ function TodayDrink({ drinkId }: Props) {
       console.log(recipeLoaded);
       dispatch(recipeInit(null));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipeLoaded]);
 
   if (loading) return <div>로딩중...</div>;
