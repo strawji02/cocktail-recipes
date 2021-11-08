@@ -28,22 +28,26 @@ function IngredientsList({ includedDrinks, setIncludedDrinks }: Props) {
   }, [dispatch]);
   //////
 
-  const onClickUtil = (e: React.MouseEvent<HTMLInputElement>, type: any) => {
+  const onClickUtil = (
+    e: React.MouseEvent<HTMLInputElement>,
+    type: "base" | "beverage"
+  ) => {
     const target = e.target as HTMLInputElement;
     const dID = parseInt(target.id);
     const drinks =
       type === "base"
         ? data?.base[dID].includedDrinks
         : data?.beverage[dID].includedDrinks;
+
     if (target.checked) {
       setIncludedDrinks({
         ...includedDrinks,
-        base: [...includedDrinks.base, { id: dID, includedDrinks: drinks }],
+        [type]: [...includedDrinks[type], { id: dID, includedDrinks: drinks }],
       });
     } else {
       setIncludedDrinks({
         ...includedDrinks,
-        base: includedDrinks.base.filter((base) => base.id !== dID),
+        [type]: includedDrinks[type].filter((base) => base.id !== dID),
       });
     }
   };

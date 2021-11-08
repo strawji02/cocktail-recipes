@@ -48,8 +48,13 @@ function SearchModalCocktailList({ drinksList }: Props) {
     <div>
       <ul>
         {recipesList.map((recipe, index) => (
-          <li key={`recipe.${recipe.id}:${recipe.cocktailName}`}>
-            <Cocktail recipe={recipe}></Cocktail>
+          <li
+            key={`SearchModalCocktailList/recipe.${recipe.id}:${recipe.cocktailName}`}
+          >
+            <Cocktail
+              parent="SearchModalCocktailList"
+              recipe={recipe}
+            ></Cocktail>
           </li>
         ))}
       </ul>

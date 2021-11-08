@@ -17,9 +17,11 @@ const DrinkList = ({ drinksList }: Props) => {
   const dispatch = useDispatch();
   //////
   const [recipesList, setRecipesList] = useState<Recipe[]>([]);
+  const [recipesLoad, setRecipesLoad] = useState(false);
 
   useEffect(() => {
     setRecipesList([]);
+    setRecipesLoad(false);
     drinksList.forEach((drinkId) => {
       dispatch(getRecipieAsync.request(drinkId));
     });
@@ -27,27 +29,35 @@ const DrinkList = ({ drinksList }: Props) => {
   }, [drinksList]);
 
   useEffect(() => {
+    console.log(data, drinksList, recipesLoad);
     if (!data) return;
     if (drinksList.length === 0) return;
-    setRecipesList((prevState: any) => [...prevState, data]);
+    if (!recipesLoad)
+      setRecipesList((prevState: any) => {
+        return [...prevState, data];
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   useEffect(() => {
     console.log(recipesList, drinksList);
-    if (recipesList.length === drinksList.length) dispatch(recipeInit(null));
+    if (recipesList.length === drinksList.length) {
+      dispatch(recipeInit(null));
+      setRecipesLoad(true);
+      console.log(recipesList, "recipeload");
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipesList]);
 
-  if (loading) return <div>로딩중...</div>;
+  if (loading && !recipesLoad) return <div>로딩중...</div>;
   if (error) return <div>에러 발생</div>;
 
   return (
     <div>
       <ul>
         {recipesList.map((recipe) => (
-          <li key={recipe.id}>
-            <Cocktail recipe={recipe}></Cocktail>
+          <li key={`DrinkList/recipe.${recipe.id}:${recipe.cocktailName}`}>
+            <Cocktail parent="DrinkList" recipe={recipe}></Cocktail>
           </li>
         ))}
       </ul>

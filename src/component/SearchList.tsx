@@ -75,8 +75,10 @@ function SearchList({ filterdData }: Props) {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <Typography id="drink-name">{drinksData.name}</Typography>
-            <Typography id="drink-list" sx={{ mt: 2 }}>
+            <Typography component={"span"} id="drink-name">
+              {drinksData.name}
+            </Typography>
+            <Typography component={"span"} id="drink-list" sx={{ mt: 2 }}>
               {drinksData.includedDrinks ? (
                 <SearchModalCocktailList
                   drinksList={drinksData.includedDrinks}

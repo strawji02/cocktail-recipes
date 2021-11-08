@@ -42,7 +42,7 @@ function TodayDrink({ drinkId }: Props) {
   if (loading) return <div>로딩중...</div>;
   if (error) return <div>에러 발생</div>;
 
-  return <Cocktail recipe={recipe}></Cocktail>;
+  return <Cocktail parent="TodatDrink" recipe={recipe}></Cocktail>;
 }
 
 export default TodayDrink;

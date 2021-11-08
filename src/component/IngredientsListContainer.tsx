@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 
 import DrinkList from "./DrinkList";
 import IngredientsList from "./IngredientsList";
+
+const StyledDrinkList = styled.div`
+  position: absolute;
+`;
 
 const IngredientsListContainer = () => {
   const [includedDrinks, setIncludedDrinks] = useState({
@@ -48,9 +53,9 @@ const IngredientsListContainer = () => {
         includedDrinks={includedDrinks}
         setIncludedDrinks={setIncludedDrinks}
       ></IngredientsList>
-      {/* {drinksList.length !== 0 && 
-      } */}
-      <DrinkList drinksList={drinksList} key={2}></DrinkList>
+      <StyledDrinkList>
+        <DrinkList drinksList={drinksList}></DrinkList>
+      </StyledDrinkList>
     </div>
   );
 };
