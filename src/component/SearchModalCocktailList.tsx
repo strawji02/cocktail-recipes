@@ -21,7 +21,6 @@ function SearchModalCocktailList({ drinksList }: Props) {
   useEffect(() => {
     setRecipesList([]);
     drinksList.forEach((drinkId) => {
-      console.log(drinkId);
       dispatch(getRecipieAsync.request(drinkId));
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -36,7 +35,6 @@ function SearchModalCocktailList({ drinksList }: Props) {
   }, [data]);
 
   useEffect(() => {
-    console.log(recipesList, drinksList);
     if (recipesList.length === drinksList.length) dispatch(recipeInit(null));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipesList]);

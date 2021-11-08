@@ -33,13 +33,12 @@ function TodayDrink({ drinkId }: Props) {
 
   useEffect(() => {
     if (recipeLoaded) {
-      console.log(recipeLoaded);
       dispatch(recipeInit(null));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipeLoaded]);
 
-  if (loading) return <div>로딩중...</div>;
+  if (loading && !recipeLoaded) return <div>로딩중...</div>;
   if (error) return <div>에러 발생</div>;
 
   return <Cocktail parent="TodatDrink" recipe={recipe}></Cocktail>;

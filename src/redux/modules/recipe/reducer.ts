@@ -26,8 +26,6 @@ const recepie = createReducer<RecipeState, RecipeAction>(initialState, {
     recipe: asyncState.error(action.payload),
   }),
   [RECIPE_INIT]: (state) => {
-    console.log("init");
-    console.log(asyncState.initial());
     return {
       ...state,
       recipe: asyncState.initial(),

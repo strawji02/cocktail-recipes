@@ -29,7 +29,7 @@ const Search = () => {
     if (anchorRef.current?.contains(event.target as HTMLElement)) {
       return;
     }
-    console.log("false");
+
     setOpen(false);
   };
 
@@ -67,7 +67,6 @@ const Search = () => {
     if (e.target.value !== 0) setOpen(true);
   };
   const onClick = (e: any) => {
-    console.log("true");
     setOpen((d) => (d = true));
   };
 

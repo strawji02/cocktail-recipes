@@ -1,6 +1,8 @@
 import {
   Checkbox,
   Container,
+  ImageList,
+  ImageListItem,
   List,
   ListItem,
   ListItemButton,
@@ -27,8 +29,6 @@ function Ingredient({ data, type }: Props) {
   const handleToggle = (value: number) => () => {
     const currentIndex = checklist.indexOf(value);
 
-    console.log(currentIndex);
-    console.log(value);
     if (currentIndex === -1) {
       dispatch(addList([value, type]));
     } else {
@@ -43,35 +43,32 @@ function Ingredient({ data, type }: Props) {
         minWidth: 300,
       }}
     >
-      <List>
-        <Tabs
+      <ImageList>
+        {/* <Tabs
           variant="scrollable"
           scrollButtons="auto"
           sx={{ bgcolor: "background.paper" }}
-        >
-          {data.map((ingredients, index) => {
-            return (
-              <ListItem
-                disablePadding={true}
-                key={`ingredient.${ingredients.id}:${ingredients.name}`}
-              >
-                <ListItemButton onClick={handleToggle(index)} dense>
-                  <Checkbox
-                    edge="start"
-                    checked={checklist.includes(index)}
-                    tabIndex={-1}
-                    disableRipple
-                  />
-                  <ListItemText
-                    id={`${index}`}
-                    primary={`${ingredients.name}`}
-                  />
-                </ListItemButton>
-              </ListItem>
-            );
-          })}
-        </Tabs>
-      </List>
+        > */}
+        {data.map((ingredients, index) => {
+          return (
+            <ImageListItem
+              // disablePadding={true}
+              key={`ingredient.${ingredients.id}:${ingredients.name}`}
+            >
+              <ListItemButton onClick={handleToggle(index)}>
+                <Checkbox
+                  edge="start"
+                  checked={checklist.includes(index)}
+                  tabIndex={-1}
+                  disableRipple
+                />
+                <ListItemText id={`${index}`} primary={`${ingredients.name}`} />
+              </ListItemButton>
+            </ImageListItem>
+          );
+        })}
+        {/* </Tabs> */}
+      </ImageList>
     </Container>
   );
 }

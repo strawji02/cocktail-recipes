@@ -29,7 +29,6 @@ const DrinkList = ({ drinksList }: Props) => {
   }, [drinksList]);
 
   useEffect(() => {
-    console.log(data, drinksList, recipesLoad);
     if (!data) return;
     if (drinksList.length === 0) return;
     if (!recipesLoad)
@@ -40,11 +39,9 @@ const DrinkList = ({ drinksList }: Props) => {
   }, [data]);
 
   useEffect(() => {
-    console.log(recipesList, drinksList);
     if (recipesList.length === drinksList.length) {
       dispatch(recipeInit(null));
       setRecipesLoad(true);
-      console.log(recipesList, "recipeload");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipesList]);
