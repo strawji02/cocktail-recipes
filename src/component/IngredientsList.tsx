@@ -27,53 +27,14 @@ function IngredientsList({ includedDrinks, setIncludedDrinks }: Props) {
     dispatch(getIngredientsAsync.request(null));
   }, [dispatch]);
   //////
-
-  const onClickUtil = (
-    e: React.MouseEvent<HTMLInputElement>,
-    type: "base" | "beverage"
-  ) => {
-    const target = e.target as HTMLInputElement;
-    const dID = parseInt(target.id);
-    const drinks =
-      type === "base"
-        ? data?.base[dID].includedDrinks
-        : data?.beverage[dID].includedDrinks;
-
-    if (target.checked) {
-      setIncludedDrinks({
-        ...includedDrinks,
-        [type]: [...includedDrinks[type], { id: dID, includedDrinks: drinks }],
-      });
-    } else {
-      setIncludedDrinks({
-        ...includedDrinks,
-        [type]: includedDrinks[type].filter((base) => base.id !== dID),
-      });
-    }
-  };
-  const onClickBase = useCallback(
-    (e: React.MouseEvent<HTMLInputElement>) => {
-      onClickUtil(e, "base");
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [data?.base, includedDrinks]
-  );
-  const onClickBeverage = useCallback(
-    (e: React.MouseEvent<HTMLInputElement>) => {
-      onClickUtil(e, "beverage");
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [data?.beverage, includedDrinks]
-  );
-
   if (loading) return <div>로딩중...</div>;
   if (error) return <div>에러 발생</div>;
   if (!data) return <div>NO DATA</div>;
 
   return (
     <div>
-      <Ingredient data={data.base} onClick={onClickBase}></Ingredient>
-      <Ingredient data={data.beverage} onClick={onClickBeverage}></Ingredient>
+      <Ingredient data={data.base} type="base"></Ingredient>
+      <Ingredient data={data.beverage} type="beverage"></Ingredient>
     </div>
   );
 }

@@ -6,13 +6,19 @@ import { combineReducers } from "redux";
 import ingredients, { ingredientsSaga } from "./ingredients";
 import recipe, { recepieSaga } from "./recipe";
 import recipeList, { recipeListSaga } from "./recipeList";
+import checklist from "./checklist";
 
 // const persistConfig = {
 //   key: "root",
 //   storage,
 //   blacklsit: [],
 // };
-const rootReducer = combineReducers({ ingredients, recipe, recipeList });
+const rootReducer = combineReducers({
+  ingredients,
+  recipe,
+  recipeList,
+  checklist,
+});
 export function* rootSaga() {
   yield all([ingredientsSaga(), recepieSaga(), recipeListSaga()]);
   // yield all([cocktailsSaga()]);

@@ -1,8 +1,15 @@
 import * as ingredientsActions from "./ingredients/actions";
 import * as recipeActions from "./recipe/actions";
 import * as RecipeListActions from "./recipeList/actions";
+import * as ChecklistActions from "./checklist/actions";
 import { ActionType } from "typesafe-actions";
 import { AsyncState } from "../lib/reducerUtils";
+
+export type ChecklistState = {
+  base: number[];
+  beverage: number[];
+};
+export type ChekclistAction = ActionType<typeof ChecklistActions>;
 
 export type RecipeList = Array<string>;
 export type RecipeListAction = ActionType<typeof RecipeListActions>;
