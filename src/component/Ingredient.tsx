@@ -1,16 +1,12 @@
 import {
   Checkbox,
   Container,
-  ImageList,
-  ImageListItem,
   List,
   ListItem,
   ListItemButton,
   ListItemText,
-  Stack,
-  Tabs,
 } from "@mui/material";
-import React, { MouseEventHandler } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/modules";
 import { addList, delList } from "../redux/modules/checklist";
@@ -29,6 +25,8 @@ function Ingredient({ data, type }: Props) {
   const handleToggle = (value: number) => () => {
     const currentIndex = checklist.indexOf(value);
 
+    console.log(currentIndex);
+    console.log(value);
     if (currentIndex === -1) {
       dispatch(addList([value, type]));
     } else {
@@ -37,38 +35,44 @@ function Ingredient({ data, type }: Props) {
   };
 
   return (
-    <Container
-      sx={{
-        maxWidth: 500,
-        minWidth: 300,
-      }}
-    >
-      <ImageList>
-        {/* <Tabs
-          variant="scrollable"
-          scrollButtons="auto"
-          sx={{ bgcolor: "background.paper" }}
-        > */}
+    <Container>
+      <List
+        sx={{
+          width: "40vw",
+          display: "flex",
+          flexDirection: "row",
+          overflow: "scroll",
+          marginTop: "5vw",
+        }}
+      >
         {data.map((ingredients, index) => {
           return (
-            <ImageListItem
-              // disablePadding={true}
+            <ListItem
+              disablePadding={true}
               key={`ingredient.${ingredients.id}:${ingredients.name}`}
+              sx={{
+                boxShadow: 1,
+                margin: 1,
+                width: "min-content",
+              }}
             >
-              <ListItemButton onClick={handleToggle(index)}>
+              <ListItemButton onClick={handleToggle(index)} dense>
                 <Checkbox
                   edge="start"
                   checked={checklist.includes(index)}
                   tabIndex={-1}
                   disableRipple
                 />
-                <ListItemText id={`${index}`} primary={`${ingredients.name}`} />
+                <ListItemText
+                  id={`${index}`}
+                  primary={`${ingredients.name}`}
+                  sx={{ width: "max-content" }}
+                />
               </ListItemButton>
-            </ImageListItem>
+            </ListItem>
           );
         })}
-        {/* </Tabs> */}
-      </ImageList>
+      </List>
     </Container>
   );
 }
