@@ -7,6 +7,7 @@ import ingredients, { ingredientsSaga } from "./ingredients";
 import recipe, { recepieSaga } from "./recipe";
 import recipeList, { recipeListSaga } from "./recipeList";
 import checklist from "./checklist";
+import drinksList from "./drinksList";
 
 // const persistConfig = {
 //   key: "root",
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   recipe,
   recipeList,
   checklist,
+  drinksList,
 });
 export function* rootSaga() {
   yield all([ingredientsSaga(), recepieSaga(), recipeListSaga()]);
