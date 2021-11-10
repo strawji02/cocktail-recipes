@@ -1,53 +1,56 @@
-import React, { useEffect, useState } from "react";
-import BaseList from "./BaseList";
-import BeverageList from "./BeverageList";
-import Cocktais from "./Cocktails";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../redux/modules";
+import { setDrinksList } from "../redux/modules/drinksList";
+import IngredientsList from "./IngredientsList";
 
 const IngredientsListContainer = () => {
-  const [includedDrinks, setIncludedDrinks] = useState({
-    base: [],
-    beverage: [],
-  });
-  const [drinksList, setDrinksList] = useState<Array<number>>([]);
+  const drinksList = useSelector((state: RootState) => state.drinksList);
+  const dispatch = useDispatch();
+
+  const includedDrinks = useSelector((state: RootState) => state.checklist);
+  const ingredients = useSelector(
+    (state: RootState) => state.ingredients.ingredients.data
+  );
+
+  const drinkListUtil = (
+    selected: typeof includedDrinks.base | typeof includedDrinks.beverage,
+    type: "base" | "beverage"
+  ) => (ingredients ? selected.map((id: number) => ingredients[type][id]) : []);
+
+  const drinkListReducer = (
+    prevArr: Array<number>,
+    curArr: Array<number>,
+    curIndex: number
+  ) => {
+    if (curIndex === 0) {
+      return curArr;
+    } else {
+      const newArr = curArr.filter((element) => prevArr.includes(element));
+      return newArr;
+    }
+  };
+
   useEffect(() => {
-    const allBaseDrinkList = includedDrinks.base.map(
-      (ingredients: { id: number; includedDrinks: Array<number> }) =>
-        ingredients.includedDrinks
+    const allBaseDrinkList = drinkListUtil(includedDrinks.base, "base").map(
+      (base) => base.includedDrinks
     );
-    const allBeverageDrinkList = includedDrinks.beverage.map(
-      (ingredients: { id: number; includedDrinks: Array<number> }) =>
-        ingredients.includedDrinks
-    );
-    const drinkList = [...allBaseDrinkList, ...allBeverageDrinkList];
-    const check = (
-      prevArr: Array<number>,
-      curArr: Array<number>,
-      curIndex: number
-    ) => {
-      if (curIndex === 0) {
-        return curArr;
-      } else {
-        const newArr = curArr.filter((element) => prevArr.includes(element));
-        return newArr;
-      }
-    };
-    const uniqueDrinkList: Array<number> = drinkList.reduce(check, []);
-    setDrinksList(uniqueDrinkList);
-  }, [includedDrinks.base, includedDrinks.beverage]);
+    const allBeverageDrinkList = drinkListUtil(
+      includedDrinks.beverage,
+      "beverage"
+    ).map((beverage) => beverage.includedDrinks);
+    const tempDrinkList = allBaseDrinkList.concat(allBeverageDrinkList);
+    const uniqueDrinkList = tempDrinkList.reduce(drinkListReducer, []);
+    if (JSON.stringify(uniqueDrinkList) !== JSON.stringify(drinksList)) {
+      // setDrinksList(uniqueDrinkList);
+      dispatch(setDrinksList(uniqueDrinkList));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [includedDrinks]);
 
   return (
     <div>
-      <BaseList
-        includedDrinks={includedDrinks}
-        setIncludedDrinks={setIncludedDrinks}
-      ></BaseList>
-      <BeverageList
-        includedDrinks={includedDrinks}
-        setIncludedDrinks={setIncludedDrinks}
-      ></BeverageList>
-      {/* {drinksList.length !== 0 && 
-      } */}
-      <Cocktais drinksList={drinksList}></Cocktais>
+      <IngredientsList></IngredientsList>
     </div>
   );
 };

@@ -1,68 +1,80 @@
-import react, { Component } from "react";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  List,
+  ListItem,
+  Typography,
+} from "@mui/material";
+import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/modules";
+import { Recipe } from "../redux/modules/index.type";
+import cocktailImage from "../img/cocktail.jpg";
 
-const Cocktail = [
-  {
-    drinks: [
-      {
-        idDrink: "11007",
-        strDrink: "Margarita",
-        strDrinkAlternate: null,
-        strTags: "IBA,ContemporaryClassic",
-        strVideo: null,
-        strCategory: "Ordinary Drink",
-        strIBA: "Contemporary Classics",
-        strAlcoholic: "Alcoholic",
-        strGlass: "Cocktail glass",
-        strInstructions:
-          "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass.",
-        strInstructionsES: null,
-        strInstructionsDE:
-          "Reiben Sie den Rand des Glases mit der Limettenscheibe, damit das Salz daran haftet. Achten Sie darauf, dass nur der \u00e4u\u00dfere Rand angefeuchtet wird und streuen Sie das Salz darauf. Das Salz sollte sich auf den Lippen des Genie\u00dfers befinden und niemals in den Cocktail einmischen. Die anderen Zutaten mit Eis sch\u00fctteln und vorsichtig in das Glas geben.",
-        strInstructionsFR: null,
-        strInstructionsIT:
-          "Strofina il bordo del bicchiere con la fetta di lime per far aderire il sale.\r\nAvere cura di inumidire solo il bordo esterno e cospargere di sale.\r\nIl sale dovrebbe presentarsi alle labbra del bevitore e non mescolarsi mai al cocktail.\r\nShakerare gli altri ingredienti con ghiaccio, quindi versarli delicatamente nel bicchiere.",
-        "strInstructionsZH-HANS": null,
-        "strInstructionsZH-HANT": null,
-        strDrinkThumb:
-          "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
-        strIngredient1: "Tequila",
-        strIngredient2: "Triple sec",
-        strIngredient3: "Lime juice",
-        strIngredient4: "Salt",
-        strIngredient5: null,
-        strIngredient6: null,
-        strIngredient7: null,
-        strIngredient8: null,
-        strIngredient9: null,
-        strIngredient10: null,
-        strIngredient11: null,
-        strIngredient12: null,
-        strIngredient13: null,
-        strIngredient14: null,
-        strIngredient15: null,
-        strMeasure1: "1 1/2 oz ",
-        strMeasure2: "1/2 oz ",
-        strMeasure3: "1 oz ",
-        strMeasure4: null,
-        strMeasure5: null,
-        strMeasure6: null,
-        strMeasure7: null,
-        strMeasure8: null,
-        strMeasure9: null,
-        strMeasure10: null,
-        strMeasure11: null,
-        strMeasure12: null,
-        strMeasure13: null,
-        strMeasure14: null,
-        strMeasure15: null,
-        strImageSource:
-          "https://commons.wikimedia.org/wiki/File:Klassiche_Margarita.jpg",
-        strImageAttribution: "Cocktailmarler",
-        strCreativeCommonsConfirmed: "Yes",
-        dateModified: "2015-08-18 14:42:59",
-      },
-    ],
-  },
-];
+interface Props {
+  recipe: Recipe | undefined;
+  parent: string;
+}
+
+function Cocktail({ recipe, parent }: Props) {
+  const ingredients = useSelector(
+    (state: RootState) => state.ingredients.ingredients.data
+  );
+
+  if (!ingredients) {
+    console.log("datanotloaded");
+    return <div>data not loaded</div>;
+  }
+
+  const ingredientTypeUtil = (ingredientType: number) => {
+    switch (ingredientType) {
+      case 0:
+        return ingredients.base;
+      case 1:
+        return ingredients.liquor;
+      case 2:
+        return ingredients.beverage;
+      case 3:
+        return ingredients.other;
+      default:
+        return ingredients?.base;
+    }
+  };
+
+  return (
+    <Card
+      sx={{
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <CardMedia component="img" height="200vh" image={cocktailImage} />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          Cocktail : {recipe?.cocktailName}
+        </Typography>
+        <List>
+          {recipe?.ingredient.map((ingredient, index) => {
+            const typedIngredient = ingredientTypeUtil(
+              ingredient.ingredientType
+            );
+            const id = ingredient.id;
+            return (
+              <ListItem
+                key={`${parent}/ingredient.${id}.${ingredient.ingredientType}`}
+                sx={{
+                  padding: "1px",
+                }}
+              >
+                {typedIngredient[id].name} : {recipe.ingredientAmountOZ[index]}
+              </ListItem>
+            );
+          })}
+        </List>
+      </CardContent>
+    </Card>
+  );
+}
 
 export default Cocktail;

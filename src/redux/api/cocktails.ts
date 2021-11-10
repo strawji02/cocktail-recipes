@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Recipe, Ingredients } from "../modules/index.type";
+import { Recipe, Ingredients, RecipeList } from "../modules/index.type";
 
 export async function getRecipe(id: number) {
   const response = await axios.get<Recipe>(
@@ -13,4 +13,11 @@ export const getIngredients = async () => {
     "http://localhost:4000/ingredients"
   );
   return response.data;
+};
+
+export const getRecipeList = async () => {
+  const respose = await axios.get<RecipeList>(
+    "http://localhost:4000/recipesList"
+  );
+  return respose.data;
 };

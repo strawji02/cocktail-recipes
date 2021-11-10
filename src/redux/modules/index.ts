@@ -4,16 +4,25 @@ import { combineReducers } from "redux";
 // import storage from "redux-persist/lib/storage";
 // import cocktails, { cocktailsSaga } from "./legacy/loadcocktails";
 import ingredients, { ingredientsSaga } from "./ingredients";
-import recipes, { recepieSaga } from "./recipes";
+import recipe, { recepieSaga } from "./recipe";
+import recipeList, { recipeListSaga } from "./recipeList";
+import checklist from "./checklist";
+import drinksList from "./drinksList";
 
 // const persistConfig = {
 //   key: "root",
 //   storage,
 //   blacklsit: [],
 // };
-const rootReducer = combineReducers({ ingredients, recipes });
+const rootReducer = combineReducers({
+  ingredients,
+  recipe,
+  recipeList,
+  checklist,
+  drinksList,
+});
 export function* rootSaga() {
-  yield all([ingredientsSaga(), recepieSaga()]);
+  yield all([ingredientsSaga(), recepieSaga(), recipeListSaga()]);
   // yield all([cocktailsSaga()]);
 }
 
