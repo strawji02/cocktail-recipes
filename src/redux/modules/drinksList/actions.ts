@@ -1,5 +1,5 @@
 import { createAction } from "typesafe-actions";
 
-export const SET_DRINK_LIST = "actions/SET_DRINK_LIST";
+export const SET_DRINKS_LIST = "actions/SET_DRINKS_LIST";
 
-export const setDrinkList = createAction(SET_DRINK_LIST)<number[]>();
+export const setDrinksList = createAction(SET_DRINKS_LIST)<number[]>();

@@ -1,10 +1,17 @@
 import { List, ListItem } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
 import { RootState } from "../redux/modules";
 import { Recipe } from "../redux/modules/index.type";
 import { getRecipieAsync, recipeInit } from "../redux/modules/recipe";
 import Cocktail from "./Cocktail";
+
+const StyledDiv = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+`;
 
 interface Props {
   drinksList: Array<number>;
@@ -47,21 +54,33 @@ const DrinkList = ({ drinksList }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipesList]);
 
-  if (loading && !recipesLoad) return <div>로딩중...</div>;
+  if (loading && !recipesLoad) return <StyledDiv>로딩중...</StyledDiv>;
   if (error) return <div>에러 발생</div>;
 
   return (
-    <div>
-      <List>
-        {recipesList.map((recipe) => (
-          <ListItem
-            key={`DrinkList/recipe.${recipe.id}:${recipe.cocktailName}`}
-          >
-            <Cocktail parent="DrinkList" recipe={recipe}></Cocktail>
-          </ListItem>
-        ))}
-      </List>
-    </div>
+    <List
+      sx={{
+        // position: "absolute",
+        width: "100%",
+
+        display: "flex",
+      }}
+    >
+      {recipesList.map((recipe) => (
+        <ListItem
+          key={`DrinkList/recipe.${recipe.id}:${recipe.cocktailName}`}
+          sx={{
+            width: "max-content",
+            height: "100%",
+            marginLeft: "3vw",
+            marginRight: "3vw",
+          }}
+        >
+          <Cocktail parent="DrinkList" recipe={recipe}></Cocktail>
+        </ListItem>
+      ))}
+    </List>
+    // </Box>
   );
 };
 

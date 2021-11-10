@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import styled from "styled-components";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/modules";
-
-import DrinkList from "./DrinkList";
+import { setDrinksList } from "../redux/modules/drinksList";
 import IngredientsList from "./IngredientsList";
 
-const StyledDrinkList = styled.div`
-  position: absolute;
-`;
-
 const IngredientsListContainer = () => {
+  const drinksList = useSelector((state: RootState) => state.drinksList);
+  const dispatch = useDispatch();
+
   const includedDrinks = useSelector((state: RootState) => state.checklist);
   const ingredients = useSelector(
     (state: RootState) => state.ingredients.ingredients.data
   );
-  const [drinksList, setDrinksList] = useState<Array<number>>([]);
 
   const drinkListUtil = (
     selected: typeof includedDrinks.base | typeof includedDrinks.beverage,
@@ -46,7 +42,8 @@ const IngredientsListContainer = () => {
     const tempDrinkList = allBaseDrinkList.concat(allBeverageDrinkList);
     const uniqueDrinkList = tempDrinkList.reduce(drinkListReducer, []);
     if (JSON.stringify(uniqueDrinkList) !== JSON.stringify(drinksList)) {
-      setDrinksList(uniqueDrinkList);
+      // setDrinksList(uniqueDrinkList);
+      dispatch(setDrinksList(uniqueDrinkList));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [includedDrinks]);
@@ -54,9 +51,6 @@ const IngredientsListContainer = () => {
   return (
     <div>
       <IngredientsList></IngredientsList>
-      <StyledDrinkList>
-        <DrinkList drinksList={drinksList}></DrinkList>
-      </StyledDrinkList>
     </div>
   );
 };

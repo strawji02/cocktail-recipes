@@ -22,7 +22,10 @@ function Cocktail({ recipe, parent }: Props) {
     (state: RootState) => state.ingredients.ingredients.data
   );
 
-  if (!ingredients) return <div>data not loaded</div>;
+  if (!ingredients) {
+    console.log("datanotloaded");
+    return <div>data not loaded</div>;
+  }
 
   const ingredientTypeUtil = (ingredientType: number) => {
     switch (ingredientType) {
@@ -42,8 +45,8 @@ function Cocktail({ recipe, parent }: Props) {
   return (
     <Card
       sx={{
-        display: "block",
         width: "100%",
+        height: "100%",
       }}
     >
       <CardMedia component="img" height="200vh" image={cocktailImage} />
@@ -60,6 +63,9 @@ function Cocktail({ recipe, parent }: Props) {
             return (
               <ListItem
                 key={`${parent}/ingredient.${id}.${ingredient.ingredientType}`}
+                sx={{
+                  padding: "1px",
+                }}
               >
                 {typedIngredient[id].name} : {recipe.ingredientAmountOZ[index]}
               </ListItem>

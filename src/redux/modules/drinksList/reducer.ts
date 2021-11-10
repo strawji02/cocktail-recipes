@@ -1,16 +1,13 @@
 import { createReducer } from "typesafe-actions";
 import { DrinksListAction, DrinksListState } from "../index.type";
-import { SET_DRINK_LIST } from "./actions";
+import { SET_DRINKS_LIST } from "./actions";
 
 const initialState: DrinksListState = [];
 
 const drinksList = createReducer<DrinksListState, DrinksListAction>(
   initialState,
   {
-    [SET_DRINK_LIST]: (state, action) => ({
-      ...state,
-      action,
-    }),
+    [SET_DRINKS_LIST]: (state, action) => action.payload,
   }
 );
 
