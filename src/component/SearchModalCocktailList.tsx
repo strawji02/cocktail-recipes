@@ -1,3 +1,4 @@
+import { List, ListItem } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/modules";
@@ -44,18 +45,18 @@ function SearchModalCocktailList({ drinksList }: Props) {
 
   return (
     <div>
-      <ul>
+      <List>
         {recipesList.map((recipe, index) => (
-          <li
+          <ListItem
             key={`SearchModalCocktailList/recipe.${recipe.id}:${recipe.cocktailName}`}
           >
             <Cocktail
               parent="SearchModalCocktailList"
               recipe={recipe}
             ></Cocktail>
-          </li>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </div>
   );
 }

@@ -43,6 +43,7 @@ function Ingredient({ data, type }: Props) {
           flexDirection: "row",
           overflow: "scroll",
           marginTop: "5vw",
+          marginBottom: "5vw",
         }}
       >
         {data.map((ingredients, index) => {

@@ -3,19 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/modules";
 import { getIngredientsAsync } from "../redux/modules/ingredients";
 import Ingredient from "./Ingredient";
-// interface Props {
-//   includedDrinks: {
-//     base: Array<{
-//       id: number;
-//       includedDrinks: Array<number>;
-//     }>;
-//     beverage: Array<{
-//       id: number;
-//       includedDrinks: Array<number>;
-//     }>;
-//   };
-//   setIncludedDrinks: Dispatch<SetStateAction<any>>;
-// }
 
 function IngredientsList() {
   //redux

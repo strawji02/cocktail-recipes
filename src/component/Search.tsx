@@ -88,11 +88,11 @@ const Search = () => {
           {open ? (
             <List
               sx={{
-                maxWidth: 360,
+                maxWidth: "57.1vw",
                 width: 1,
                 bgcolor: "background.paper",
                 position: "absolute",
-                zIndex: 0,
+                zIndex: 10,
                 overflow: "auto",
                 maxHeight: 300,
                 backgroundColor: "#fafafa",

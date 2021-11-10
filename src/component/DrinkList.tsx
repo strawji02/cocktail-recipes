@@ -1,3 +1,4 @@
+import { List, ListItem } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/modules";
@@ -51,13 +52,15 @@ const DrinkList = ({ drinksList }: Props) => {
 
   return (
     <div>
-      <ul>
+      <List>
         {recipesList.map((recipe) => (
-          <li key={`DrinkList/recipe.${recipe.id}:${recipe.cocktailName}`}>
+          <ListItem
+            key={`DrinkList/recipe.${recipe.id}:${recipe.cocktailName}`}
+          >
             <Cocktail parent="DrinkList" recipe={recipe}></Cocktail>
-          </li>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </div>
   );
 };

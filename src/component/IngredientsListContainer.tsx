@@ -11,10 +11,6 @@ const StyledDrinkList = styled.div`
 `;
 
 const IngredientsListContainer = () => {
-  // const [includedDrinks, setIncludedDrinks] = useState({
-  //   base: [],
-  //   beverage: [],
-  // });
   const includedDrinks = useSelector((state: RootState) => state.checklist);
   const ingredients = useSelector(
     (state: RootState) => state.ingredients.ingredients.data

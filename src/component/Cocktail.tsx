@@ -1,7 +1,17 @@
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  List,
+  ListItem,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/modules";
 import { Recipe } from "../redux/modules/index.type";
+import cocktailImage from "../img/cocktail.jpg";
+
 interface Props {
   recipe: Recipe | undefined;
   parent: string;
@@ -30,20 +40,34 @@ function Cocktail({ recipe, parent }: Props) {
   };
 
   return (
-    <div>
-      칵테일 : {recipe?.cocktailName}
-      <ul>
-        {recipe?.ingredient.map((ingredient, index) => {
-          const typedIngredient = ingredientTypeUtil(ingredient.ingredientType);
-          const id = ingredient.id;
-          return (
-            <li key={`${parent}/ingredient.${id}.${ingredient.ingredientType}`}>
-              {typedIngredient[id].name} : {recipe.ingredientAmountOZ[index]}
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <Card
+      sx={{
+        display: "block",
+        width: "100%",
+      }}
+    >
+      <CardMedia component="img" height="200vh" image={cocktailImage} />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          Cocktail : {recipe?.cocktailName}
+        </Typography>
+        <List>
+          {recipe?.ingredient.map((ingredient, index) => {
+            const typedIngredient = ingredientTypeUtil(
+              ingredient.ingredientType
+            );
+            const id = ingredient.id;
+            return (
+              <ListItem
+                key={`${parent}/ingredient.${id}.${ingredient.ingredientType}`}
+              >
+                {typedIngredient[id].name} : {recipe.ingredientAmountOZ[index]}
+              </ListItem>
+            );
+          })}
+        </List>
+      </CardContent>
+    </Card>
   );
 }
 
