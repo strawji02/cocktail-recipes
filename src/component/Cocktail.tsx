@@ -51,7 +51,7 @@ function Cocktail({ recipe, parent }: Props) {
     >
       <CardMedia component="img" height="200vh" image={cocktailImage} />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom={true} variant="h5" component="div">
           Cocktail : {recipe?.cocktailName}
         </Typography>
         <List>
@@ -67,11 +67,14 @@ function Cocktail({ recipe, parent }: Props) {
                   padding: "1px",
                 }}
               >
-                {typedIngredient[id].name} : {recipe.ingredientAmountOZ[index]}
+                {typedIngredient[id].name} : {recipe.ingredientAmountOZ[index]}{" "}
+                ({recipe.ingredientAmountML[index]})
               </ListItem>
             );
           })}
         </List>
+        <Typography variant="h6">믹스 방법</Typography>
+        <Typography variant="body1">{recipe?.mixing}</Typography>
       </CardContent>
     </Card>
   );

@@ -70,7 +70,7 @@ const DrinkList = ({ drinksList }: Props) => {
         <ListItem
           key={`DrinkList/recipe.${recipe.id}:${recipe.cocktailName}`}
           sx={{
-            width: "max-content",
+            width: "40vw",
             height: "100%",
             marginLeft: "3vw",
             marginRight: "3vw",
