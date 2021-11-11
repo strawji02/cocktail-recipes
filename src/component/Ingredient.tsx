@@ -24,9 +24,6 @@ function Ingredient({ data, type }: Props) {
 
   const handleToggle = (value: number) => () => {
     const currentIndex = checklist.indexOf(value);
-
-    console.log(currentIndex);
-    console.log(value);
     if (currentIndex === -1) {
       dispatch(addList([value, type]));
     } else {

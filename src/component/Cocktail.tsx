@@ -22,10 +22,7 @@ function Cocktail({ recipe, parent }: Props) {
     (state: RootState) => state.ingredients.ingredients.data
   );
 
-  if (!ingredients) {
-    console.log("datanotloaded");
-    return <div>data not loaded</div>;
-  }
+  if (!ingredients) return <div>data not loaded</div>;
 
   const ingredientTypeUtil = (ingredientType: number) => {
     switch (ingredientType) {
