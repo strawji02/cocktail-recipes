@@ -21,6 +21,7 @@ function IngredientsList() {
   return (
     <div>
       <Ingredient data={data.base} type="base"></Ingredient>
+      <Ingredient data={data.liquor} type="liquor"></Ingredient>
       <Ingredient data={data.beverage} type="beverage"></Ingredient>
     </div>
   );

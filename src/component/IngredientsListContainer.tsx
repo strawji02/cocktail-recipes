@@ -15,7 +15,7 @@ const IngredientsListContainer = () => {
 
   const drinkListUtil = (
     selected: typeof includedDrinks.base | typeof includedDrinks.beverage,
-    type: "base" | "beverage"
+    type: "base" | "beverage" | "liquor"
   ) => (ingredients ? selected.map((id: number) => ingredients[type][id]) : []);
 
   const drinkListReducer = (
@@ -39,7 +39,13 @@ const IngredientsListContainer = () => {
       includedDrinks.beverage,
       "beverage"
     ).map((beverage) => beverage.includedDrinks);
-    const tempDrinkList = allBaseDrinkList.concat(allBeverageDrinkList);
+    const allLiquorDrinkList = drinkListUtil(
+      includedDrinks.liquor,
+      "liquor"
+    ).map((liquor) => liquor.includedDrinks);
+    const tempDrinkList = allBaseDrinkList
+      .concat(allBeverageDrinkList)
+      .concat(allLiquorDrinkList);
     const uniqueDrinkList = tempDrinkList.reduce(drinkListReducer, []);
     if (JSON.stringify(uniqueDrinkList) !== JSON.stringify(drinksList)) {
       // setDrinksList(uniqueDrinkList);

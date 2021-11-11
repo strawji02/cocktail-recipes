@@ -5,6 +5,7 @@ import { ADD_LIST, DEL_LIST } from "./actions";
 const initialState: ChecklistState = {
   base: [],
   beverage: [],
+  liquor: [],
 };
 const checklist = createReducer<ChecklistState, ChekclistAction>(initialState, {
   [ADD_LIST]: (state, action) => {

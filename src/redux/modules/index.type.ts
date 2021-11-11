@@ -12,6 +12,7 @@ export type DrinksListAction = ActionType<typeof DrinksListActions>;
 export type ChecklistState = {
   base: number[];
   beverage: number[];
+  liquor: number[];
 };
 export type ChekclistAction = ActionType<typeof ChecklistActions>;
 

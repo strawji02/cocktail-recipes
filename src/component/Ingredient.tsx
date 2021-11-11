@@ -13,7 +13,7 @@ import { addList, delList } from "../redux/modules/checklist";
 import { Base } from "../redux/modules/index.type";
 interface Props {
   data: Base[];
-  type: "base" | "beverage";
+  type: "base" | "beverage" | "liquor";
 }
 
 function Ingredient({ data, type }: Props) {
@@ -52,9 +52,14 @@ function Ingredient({ data, type }: Props) {
                 boxShadow: 1,
                 margin: 1,
                 width: "min-content",
+                height: "10vh",
               }}
             >
-              <ListItemButton onClick={handleToggle(index)} dense>
+              <ListItemButton
+                onClick={handleToggle(index)}
+                sx={{ height: "100%" }}
+                dense
+              >
                 <Checkbox
                   edge="start"
                   checked={checklist.includes(index)}

@@ -60,9 +60,7 @@ const DrinkList = ({ drinksList }: Props) => {
   return (
     <List
       sx={{
-        // position: "absolute",
         width: "100%",
-
         display: "flex",
       }}
     >
