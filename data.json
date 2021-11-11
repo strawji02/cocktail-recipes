@@ -8,7 +8,8 @@
     "다이키리",
     "블러싱 러시안",
     "블랙 러시안",
-    "화이트 러시안"
+    "화이트 러시안",
+    "카미카제"
   ],
   "recipes": [
     {
@@ -189,10 +190,11 @@
       "ingredient": [
         { "id": 0, "ingredientType": 0 },
         { "id": 2, "ingredientType": 1 },
-        { "id": 3, "ingredientType": 2 }
+        { "id": 3, "ingredientType": 2 },
+        { "id": 1, "ingredientType": 3 }
       ],
-      "ingredientAmountOZ": ["1"],
-      "ingredientAmountML": ["30"],
+      "ingredientAmountOZ": ["1온스", "1/2온스", "1/2온스", "1웨지"],
+      "ingredientAmountML": ["30ml", "15ml", "15ml", "1웨지"],
       "mixing": "쉐이커에 얼음을 채운다. 모든 재료를 넣고 쉐이킹을 한다. 스트레이너를 사용하여 칵테일 글래스에 따른다."
     }
   ],
@@ -202,7 +204,7 @@
       {
         "id": 0,
         "name": "보드카",
-        "includedDrinks": [0, 1, 2, 3, 6, 7, 8]
+        "includedDrinks": [0, 1, 2, 3, 6, 7, 8, 9]
       },
       {
         "id": 1,
@@ -235,7 +237,7 @@
       {
         "id": 2,
         "name": "트리플섹",
-        "includedDrinks": [2, 3, 4]
+        "includedDrinks": [2, 3, 4, 9]
       },
       {
         "id": 3,
@@ -263,7 +265,7 @@
       {
         "id": 3,
         "name": "레몬주스",
-        "includedDrinks": [2]
+        "includedDrinks": [2, 9]
       },
       {
         "id": 4,
@@ -301,7 +303,7 @@
       {
         "id": 1,
         "name": "라임",
-        "includedDrinks": [1, 2, 5]
+        "includedDrinks": [1, 2, 5, 9]
       },
       {
         "id": 2,
