@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../redux/modules";
-import { setDrinksList } from "../redux/modules/drinksList";
-import IngredientsList from "./IngredientsList";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../redux/modules';
+import { setDrinksList } from '../redux/modules/drinksList';
+import IngredientsList from './IngredientsList';
 
 const IngredientsListContainer = () => {
   const drinksList = useSelector((state: RootState) => state.drinksList);
@@ -10,18 +10,18 @@ const IngredientsListContainer = () => {
 
   const includedDrinks = useSelector((state: RootState) => state.checklist);
   const ingredients = useSelector(
-    (state: RootState) => state.ingredients.ingredients.data
+    (state: RootState) => state.ingredients.ingredients.data,
   );
 
   const drinkListUtil = (
     selected: typeof includedDrinks.base | typeof includedDrinks.beverage,
-    type: "base" | "beverage" | "liquor"
+    type: 'base' | 'beverage' | 'liquor',
   ) => (ingredients ? selected.map((id: number) => ingredients[type][id]) : []);
 
   const drinkListReducer = (
-    prevArr: Array<number>,
-    curArr: Array<number>,
-    curIndex: number
+    prevArr: number[],
+    curArr: number[],
+    curIndex: number,
   ) => {
     if (curIndex === 0) {
       return curArr;
@@ -32,16 +32,16 @@ const IngredientsListContainer = () => {
   };
 
   useEffect(() => {
-    const allBaseDrinkList = drinkListUtil(includedDrinks.base, "base").map(
-      (base) => base.includedDrinks
+    const allBaseDrinkList = drinkListUtil(includedDrinks.base, 'base').map(
+      (base) => base.includedDrinks,
     );
     const allBeverageDrinkList = drinkListUtil(
       includedDrinks.beverage,
-      "beverage"
+      'beverage',
     ).map((beverage) => beverage.includedDrinks);
     const allLiquorDrinkList = drinkListUtil(
       includedDrinks.liquor,
-      "liquor"
+      'liquor',
     ).map((liquor) => liquor.includedDrinks);
     const tempDrinkList = allBaseDrinkList
       .concat(allBeverageDrinkList)

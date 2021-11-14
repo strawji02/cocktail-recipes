@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../redux/modules";
-import * as Hangul from "hangul-js";
-import TextFiled from "@mui/material/TextField";
-import { ClickAwayListener, List } from "@mui/material";
-import SearchList from "./SearchList";
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/modules';
+import * as Hangul from 'hangul-js';
+import TextFiled from '@mui/material/TextField';
+import { ClickAwayListener, List } from '@mui/material';
+import SearchList from './SearchList';
 
 // const StyledSarchList = styled(SearchList)`
 //   width: 100px;
@@ -19,28 +19,25 @@ const Search = () => {
   //redux
   const recipeList = useSelector((state: RootState) => state.recipeList);
   const ingredients = useSelector(
-    (state: RootState) => state.ingredients.ingredients
+    (state: RootState) => state.ingredients.ingredients,
   );
   //////
   const [open, setOpen] = useState(false);
   const anchorRef = React.useRef<HTMLDivElement>(null);
 
   const handleClose = (event: Event | React.SyntheticEvent) => {
-    if (anchorRef.current?.contains(event.target as HTMLElement)) {
-      return;
-    }
-
+    if (anchorRef.current?.contains(event.target as HTMLElement)) return;
     setOpen(false);
   };
 
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const [filterdData, setFilterdData] = useState<Data[]>([]);
 
   useEffect(() => {
     if (value.length !== 0) {
       setFilterdData(
         (data) =>
-          (data = searchData.filter((d) => Hangul.search(d.name, value) > -1))
+          (data = searchData.filter((d) => Hangul.search(d.name, value) > -1)),
       );
     } else {
       setFilterdData([]);
@@ -74,30 +71,28 @@ const Search = () => {
     <div>
       <TextFiled
         ref={anchorRef}
-        id="standard-basic"
-        label="아무거나 검색해보세요!"
+        id='standard-basic'
+        label='아무거나 검색해보세요!'
         fullWidth
-        margin="dense"
-        variant="standard"
+        margin='dense'
+        variant='standard'
         onChange={onChange}
         onClick={onClick}
-        value={value}
-      ></TextFiled>
+        value={value}></TextFiled>
       {value.length === 0 ? null : (
         <ClickAwayListener onClickAway={handleClose}>
           {open ? (
             <List
               sx={{
-                maxWidth: "57.1vw",
+                maxWidth: '57.1vw',
                 width: 1,
-                bgcolor: "background.paper",
-                position: "absolute",
+                bgcolor: 'background.paper',
+                position: 'absolute',
                 zIndex: 10,
-                overflow: "auto",
+                overflow: 'auto',
                 maxHeight: 300,
-                backgroundColor: "#fafafa",
-              }}
-            >
+                backgroundColor: '#fafafa',
+              }}>
               <SearchList filterdData={filterdData}></SearchList>
             </List>
           ) : (

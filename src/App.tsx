@@ -49,13 +49,13 @@ function App() {
     <Container>
       <StyledTitle>칵테일 레시피</StyledTitle>
       <StyledSearch>
-        <Search></Search>
+        <Search />
       </StyledSearch>
       <StyledRecommende>
-        <RecommendedDrinks></RecommendedDrinks>
+        <RecommendedDrinks />
       </StyledRecommende>
       <StyledListContainer>
-        <IngredientsListContainer></IngredientsListContainer>
+        <IngredientsListContainer />
       </StyledListContainer>
       <StyledDrinkList>
         <DrinkList drinksList={drinksList}></DrinkList>

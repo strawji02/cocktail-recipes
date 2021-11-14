@@ -1,11 +1,11 @@
-import { List, ListItem } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
-import { RootState } from "../redux/modules";
-import { Recipe } from "../redux/modules/index.type";
-import { getRecipieAsync, recipeInit } from "../redux/modules/recipe";
-import Cocktail from "./Cocktail";
+import { List, ListItem } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
+import { RootState } from '../redux/modules';
+import { Recipe } from '../redux/modules/index.type';
+import { getRecipieAsync, recipeInit } from '../redux/modules/recipe';
+import Cocktail from './Cocktail';
 
 const StyledDiv = styled.div`
   width: 100%;
@@ -20,7 +20,7 @@ interface Props {
 const DrinkList = ({ drinksList }: Props) => {
   // redux
   const { data, loading, error } = useSelector(
-    (state: RootState) => state.recipe.recipe
+    (state: RootState) => state.recipe.recipe,
   );
   const dispatch = useDispatch();
   //////
@@ -60,21 +60,19 @@ const DrinkList = ({ drinksList }: Props) => {
   return (
     <List
       sx={{
-        width: "100%",
-        display: "flex",
-      }}
-    >
+        width: '100%',
+        display: 'flex',
+      }}>
       {recipesList.map((recipe) => (
         <ListItem
           key={`DrinkList/recipe.${recipe.id}:${recipe.cocktailName}`}
           sx={{
-            width: "40vw",
-            height: "100%",
-            marginLeft: "3vw",
-            marginRight: "3vw",
-          }}
-        >
-          <Cocktail parent="DrinkList" recipe={recipe}></Cocktail>
+            width: '40vw',
+            height: '100%',
+            marginLeft: '3vw',
+            marginRight: '3vw',
+          }}>
+          <Cocktail parent='DrinkList' recipe={recipe}></Cocktail>
         </ListItem>
       ))}
     </List>

@@ -5,12 +5,12 @@ import {
   List,
   ListItem,
   Typography,
-} from "@mui/material";
-import React from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../redux/modules";
-import { Recipe } from "../redux/modules/index.type";
-import cocktailImage from "../img/cocktail.jpg";
+} from '@mui/material';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/modules';
+import { Recipe } from '../redux/modules/index.type';
+import cocktailImage from '../img/cocktail.jpg';
 
 interface Props {
   recipe: Recipe | undefined;
@@ -19,7 +19,7 @@ interface Props {
 
 function Cocktail({ recipe, parent }: Props) {
   const ingredients = useSelector(
-    (state: RootState) => state.ingredients.ingredients.data
+    (state: RootState) => state.ingredients.ingredients.data,
   );
 
   if (!ingredients) return <div>data not loaded</div>;
@@ -42,36 +42,34 @@ function Cocktail({ recipe, parent }: Props) {
   return (
     <Card
       sx={{
-        width: "100%",
-        height: "100%",
-      }}
-    >
-      <CardMedia component="img" height="200vh" image={cocktailImage} />
+        width: '100%',
+        height: '100%',
+      }}>
+      <CardMedia component='img' height='200vh' image={cocktailImage} />
       <CardContent>
-        <Typography gutterBottom={true} variant="h5" component="div">
-          Cocktail : {recipe?.cocktailName}
+        <Typography gutterBottom={true} variant='h5' component='div'>
+          Cocktail : {recipe?.cocktailName ?? ''}
         </Typography>
         <List>
           {recipe?.ingredient.map((ingredient, index) => {
             const typedIngredient = ingredientTypeUtil(
-              ingredient.ingredientType
+              ingredient.ingredientType,
             );
             const id = ingredient.id;
             return (
               <ListItem
                 key={`${parent}/ingredient.${id}.${ingredient.ingredientType}`}
                 sx={{
-                  padding: "1px",
-                }}
-              >
-                {typedIngredient[id].name} : {recipe.ingredientAmountOZ[index]}{" "}
+                  padding: '1px',
+                }}>
+                {typedIngredient[id].name} : {recipe.ingredientAmountOZ[index]}{' '}
                 ({recipe.ingredientAmountML[index]})
               </ListItem>
             );
           })}
         </List>
-        <Typography variant="h6">믹스 방법</Typography>
-        <Typography variant="body1">{recipe?.mixing}</Typography>
+        <Typography variant='h6'>믹스 방법</Typography>
+        <Typography variant='body1'>{recipe?.mixing}</Typography>
       </CardContent>
     </Card>
   );
