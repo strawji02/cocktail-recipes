@@ -8,7 +8,7 @@ import { AsyncState } from '../lib/reducerUtils';
 
 export type CheckListType = 'base' | 'beverage' | 'liquor';
 
-export type DrinksListState = number[];
+export type DrinksListState = { drinks: number[] };
 export type DrinksListAction = ActionType<typeof DrinksListActions>;
 
 export type ChecklistState = {

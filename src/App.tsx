@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
-import RecommendedDrinks from "./component/RecommendedDrinks";
-import Search from "./component/Search";
-import IngredientsListContainer from "./component/IngredientsListContainer";
-import DrinkList from "./component/DrinkList";
-import { useSelector } from "react-redux";
-import { RootState } from "./redux/modules";
+import React from 'react';
+import styled from 'styled-components';
+import RecommendedDrinks from './component/RecommendedDrinks';
+import Search from './component/Search';
+import IngredientsListContainer from './component/IngredientsListContainer';
+import DrinkList from './component/DrinkList';
+import { useSelector } from 'react-redux';
+import { RootState } from './redux/modules';
 
 const StyledTitle = styled.h1`
   grid-column: 3/5;
@@ -44,7 +44,7 @@ const Container = styled.div`
 `;
 
 function App() {
-  const drinksList = useSelector((state: RootState) => state.drinksList);
+  const drinksList = useSelector((state: RootState) => state.drinksList.drinks);
   return (
     <Container>
       <StyledTitle>칵테일 레시피</StyledTitle>

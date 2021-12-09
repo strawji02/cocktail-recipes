@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { DrinksListState } from '../index.type';
 
-const initialState: DrinksListState = [];
+const initialState: DrinksListState = { drinks: [] };
 
 const dirnksSlice = createSlice({
   name: 'drinks',
   initialState,
   reducers: {
     setDrinksList(state: DrinksListState, action) {
-      state = action.payload;
+      state.drinks = action.payload;
     },
   },
 });
