@@ -1,19 +1,22 @@
-import * as ingredientsActions from "./ingredients/actions";
-import * as recipeActions from "./recipe/actions";
-import * as RecipeListActions from "./recipeList/actions";
-import * as ChecklistActions from "./checklist/actions";
-import * as DrinksListActions from "./drinksList/actions";
-import { ActionType } from "typesafe-actions";
-import { AsyncState } from "../lib/reducerUtils";
+import * as ingredientsActions from './ingredients/actions';
+import * as recipeActions from './recipe/actions';
+import * as RecipeListActions from './recipeList/actions';
+import * as ChecklistActions from './checklist/slice';
+import * as DrinksListActions from './drinksList/slice';
+import { ActionType } from 'typesafe-actions';
+import { AsyncState } from '../lib/reducerUtils';
 
-export type DrinksListState = number[];
+export type CheckListType = 'base' | 'beverage' | 'liquor';
+
+export type DrinksListState = { drinks: number[] };
 export type DrinksListAction = ActionType<typeof DrinksListActions>;
 
 export type ChecklistState = {
   base: number[];
   beverage: number[];
+  liquor: number[];
 };
-export type ChekclistAction = ActionType<typeof ChecklistActions>;
+export type ChecklistAction = ActionType<typeof ChecklistActions>;
 
 export type RecipeList = Array<string>;
 export type RecipeListAction = ActionType<typeof RecipeListActions>;

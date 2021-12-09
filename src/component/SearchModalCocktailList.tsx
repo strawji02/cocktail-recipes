@@ -1,10 +1,10 @@
-import { List, ListItem } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../redux/modules";
-import { Recipe } from "../redux/modules/index.type";
-import { getRecipieAsync, recipeInit } from "../redux/modules/recipe";
-import Cocktail from "./Cocktail";
+import { List, ListItem } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../redux/modules';
+import { Recipe } from '../redux/modules/index.type';
+import { getRecipieAsync, recipeInit } from '../redux/modules/recipe';
+import Cocktail from './Cocktail';
 
 interface Props {
   drinksList: Array<number>;
@@ -13,7 +13,7 @@ interface Props {
 function SearchModalCocktailList({ drinksList }: Props) {
   // redux
   const { data, loading, error } = useSelector(
-    (state: RootState) => state.recipe.recipe
+    (state: RootState) => state.recipe.recipe,
   );
   const dispatch = useDispatch();
   //////
@@ -46,14 +46,12 @@ function SearchModalCocktailList({ drinksList }: Props) {
   return (
     <div>
       <List>
-        {recipesList.map((recipe, index) => (
+        {recipesList.map((recipe) => (
           <ListItem
-            key={`SearchModalCocktailList/recipe.${recipe.id}:${recipe.cocktailName}`}
-          >
+            key={`SearchModalCocktailList/recipe.${recipe.id}:${recipe.cocktailName}`}>
             <Cocktail
-              parent="SearchModalCocktailList"
-              recipe={recipe}
-            ></Cocktail>
+              parent='SearchModalCocktailList'
+              recipe={recipe}></Cocktail>
           </ListItem>
         ))}
       </List>

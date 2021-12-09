@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../redux/modules";
-import { getRecipeListAsync } from "../redux/modules/recipeList";
-import TodayDrink from "./TodayDrink";
+import { Typography } from '@mui/material';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../redux/modules';
+import { getRecipeListAsync } from '../redux/modules/recipeList';
+import TodayDrink from './TodayDrink';
 
 const date = () => {
   const d = new Date();
@@ -13,7 +14,7 @@ const date = () => {
   if (month.length < 2) month = `0${month}`;
   if (day.length < 2) day = `0${day}`;
 
-  const getDate = [year, month, day].join("");
+  const getDate = [year, month, day].join('');
   return `${getDate}`;
 };
 
@@ -21,7 +22,7 @@ const RecommendedDrinks = () => {
   //redux
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector(
-    (state: RootState) => state.recipeList
+    (state: RootState) => state.recipeList,
   );
   //////
   useEffect(() => {
@@ -38,6 +39,7 @@ const RecommendedDrinks = () => {
 
   return (
     <div>
+      <Typography variant='h2'>Today Drink</Typography>
       <TodayDrink drinkId={randomDrinkId}></TodayDrink>
     </div>
   );
