@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1aea5d1166f025bf7b2b63d42f7fc9d7",
+    "revision": "245ee6c44f95ed07098223f54b5b9f0c",
     "url": "/cocktail-recipes/index.html"
   },
   {
-    "revision": "4a984739879b10fce2a5",
+    "revision": "fb359421082b4d6e6b33",
     "url": "/cocktail-recipes/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cocktail-recipes/static/js/3.2b9cd248.chunk.js"
   },
   {
-    "revision": "4a984739879b10fce2a5",
-    "url": "/cocktail-recipes/static/js/main.389642b3.chunk.js"
+    "revision": "fb359421082b4d6e6b33",
+    "url": "/cocktail-recipes/static/js/main.a587a58d.chunk.js"
   },
   {
     "revision": "b39762336cbccee5256d",

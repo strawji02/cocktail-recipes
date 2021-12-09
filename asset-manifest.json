@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/cocktail-recipes/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/cocktail-recipes/static/js/main.389642b3.chunk.js",
-    "main.js.map": "/cocktail-recipes/static/js/main.389642b3.chunk.js.map",
+    "main.js": "/cocktail-recipes/static/js/main.a587a58d.chunk.js",
+    "main.js.map": "/cocktail-recipes/static/js/main.a587a58d.chunk.js.map",
     "runtime-main.js": "/cocktail-recipes/static/js/runtime-main.00a59b92.js",
     "runtime-main.js.map": "/cocktail-recipes/static/js/runtime-main.00a59b92.js.map",
     "static/js/2.68c0c9c1.chunk.js": "/cocktail-recipes/static/js/2.68c0c9c1.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.2b9cd248.chunk.js": "/cocktail-recipes/static/js/3.2b9cd248.chunk.js",
     "static/js/3.2b9cd248.chunk.js.map": "/cocktail-recipes/static/js/3.2b9cd248.chunk.js.map",
     "index.html": "/cocktail-recipes/index.html",
-    "precache-manifest.9376d47b03f9105cc74da3318161eb9d.js": "/cocktail-recipes/precache-manifest.9376d47b03f9105cc74da3318161eb9d.js",
+    "precache-manifest.8d71a713dacb27e5b91162621f7947c7.js": "/cocktail-recipes/precache-manifest.8d71a713dacb27e5b91162621f7947c7.js",
     "service-worker.js": "/cocktail-recipes/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/cocktail-recipes/static/css/main.5ecd60fb.chunk.css.map",
     "static/js/2.68c0c9c1.chunk.js.LICENSE.txt": "/cocktail-recipes/static/js/2.68c0c9c1.chunk.js.LICENSE.txt",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.00a59b92.js",
     "static/js/2.68c0c9c1.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.389642b3.chunk.js"
+    "static/js/main.a587a58d.chunk.js"
   ]
 }
