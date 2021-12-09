@@ -45,7 +45,11 @@ function Cocktail({ recipe, parent }: Props) {
         width: '100%',
         height: '100%',
       }}>
-      <CardMedia component='img' height='200vh' image={cocktailImage} />
+      <CardMedia
+        component='img'
+        height='200vh'
+        image={`https://exprestestserver.herokuapp.com/images/${recipe?.id}.png`}
+      />
       <CardContent>
         <Typography gutterBottom={true} variant='h5' component='div'>
           Cocktail : {recipe?.cocktailName ?? ''}
