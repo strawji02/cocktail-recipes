@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/static/js/main.389642b3.chunk.js",
-    "main.js.map": "/static/js/main.389642b3.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.6a7f2ee2.js",
-    "runtime-main.js.map": "/static/js/runtime-main.6a7f2ee2.js.map",
-    "static/js/2.aeec9074.chunk.js": "/static/js/2.aeec9074.chunk.js",
-    "static/js/2.aeec9074.chunk.js.map": "/static/js/2.aeec9074.chunk.js.map",
-    "static/js/3.2b9cd248.chunk.js": "/static/js/3.2b9cd248.chunk.js",
-    "static/js/3.2b9cd248.chunk.js.map": "/static/js/3.2b9cd248.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.7a07331aff6959ce421b3dab47a3eb94.js": "/precache-manifest.7a07331aff6959ce421b3dab47a3eb94.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.5ecd60fb.chunk.css.map": "/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.aeec9074.chunk.js.LICENSE.txt": "/static/js/2.aeec9074.chunk.js.LICENSE.txt",
-    "static/media/cocktail.jpg": "/static/media/cocktail.3d7c8dfd.jpg"
+    "main.css": "/cocktail-recipes/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/cocktail-recipes/static/js/main.389642b3.chunk.js",
+    "main.js.map": "/cocktail-recipes/static/js/main.389642b3.chunk.js.map",
+    "runtime-main.js": "/cocktail-recipes/static/js/runtime-main.00a59b92.js",
+    "runtime-main.js.map": "/cocktail-recipes/static/js/runtime-main.00a59b92.js.map",
+    "static/js/2.68c0c9c1.chunk.js": "/cocktail-recipes/static/js/2.68c0c9c1.chunk.js",
+    "static/js/2.68c0c9c1.chunk.js.map": "/cocktail-recipes/static/js/2.68c0c9c1.chunk.js.map",
+    "static/js/3.2b9cd248.chunk.js": "/cocktail-recipes/static/js/3.2b9cd248.chunk.js",
+    "static/js/3.2b9cd248.chunk.js.map": "/cocktail-recipes/static/js/3.2b9cd248.chunk.js.map",
+    "index.html": "/cocktail-recipes/index.html",
+    "precache-manifest.9376d47b03f9105cc74da3318161eb9d.js": "/cocktail-recipes/precache-manifest.9376d47b03f9105cc74da3318161eb9d.js",
+    "service-worker.js": "/cocktail-recipes/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/cocktail-recipes/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.68c0c9c1.chunk.js.LICENSE.txt": "/cocktail-recipes/static/js/2.68c0c9c1.chunk.js.LICENSE.txt",
+    "static/media/cocktail.jpg": "/cocktail-recipes/static/media/cocktail.3d7c8dfd.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.6a7f2ee2.js",
-    "static/js/2.aeec9074.chunk.js",
+    "static/js/runtime-main.00a59b92.js",
+    "static/js/2.68c0c9c1.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
     "static/js/main.389642b3.chunk.js"
   ]
