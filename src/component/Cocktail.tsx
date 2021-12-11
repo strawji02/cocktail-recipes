@@ -10,7 +10,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/modules';
 import { Recipe } from '../redux/modules/index.type';
-import cocktailImage from '../img/cocktail.jpg';
 
 interface Props {
   recipe: Recipe | undefined;
