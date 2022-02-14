@@ -47,12 +47,12 @@ export interface Recipe {
   id: number;
   cocktailName: string;
   ingredient: Ingredient[];
-  ingredientAmountOZ: string[];
-  ingredientAmountML: string[];
   mixing: string;
 }
 
 export interface Ingredient {
   id: number;
-  ingredientType: number;
+  ingredientType: string;
+  ingredientAmountOZ: string;
+  ingredientAmountML: string;
 }
