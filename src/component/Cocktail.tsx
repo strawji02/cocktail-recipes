@@ -24,20 +24,20 @@ function Cocktail({ recipe, parent }: Props) {
 
   if (!ingredients) return <div>data not loaded</div>;
 
-  const ingredientTypeUtil = (ingredientType: number) => {
-    switch (ingredientType) {
-      case 0:
-        return ingredients.base;
-      case 1:
-        return ingredients.liquor;
-      case 2:
-        return ingredients.beverage;
-      case 3:
-        return ingredients.other;
-      default:
-        return ingredients?.base;
-    }
-  };
+  // const ingredientTypeUtil = (ingredientType: string) => {
+  //   switch (ingredientType) {
+  //     case 0:
+  //       return ingredients.base;
+  //     case 1:
+  //       return ingredients.liquor;
+  //     case 2:
+  //       return ingredients.beverage;
+  //     case 3:
+  //       return ingredients.other;
+  //     default:
+  //       return ingredients?.base;
+  //   }
+  // };
 
   return (
     <Card
@@ -56,9 +56,9 @@ function Cocktail({ recipe, parent }: Props) {
         </Typography>
         <List>
           {recipe?.ingredient.map((ingredient, index) => {
-            const typedIngredient = ingredientTypeUtil(
-              ingredient.ingredientType,
-            );
+            // const typedIngredient = ingredientTypeUtil(
+            //   ingredient.ingredientType,
+            // );
             const id = ingredient.id;
             return (
               <ListItem
@@ -66,8 +66,9 @@ function Cocktail({ recipe, parent }: Props) {
                 sx={{
                   padding: '1px',
                 }}>
-                {typedIngredient[id].name} : {recipe.ingredientAmountOZ[index]}{' '}
-                ({recipe.ingredientAmountML[index]})
+                {ingredients[ingredient.ingredientType][id].name} :{' '}
+                {ingredient.ingredientAmountOZ}
+                {ingredient.ingredientAmountML}
               </ListItem>
             );
           })}

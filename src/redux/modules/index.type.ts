@@ -6,6 +6,8 @@ import * as DrinksListActions from './drinksList/slice';
 import { ActionType } from 'typesafe-actions';
 import { AsyncState } from '../lib/reducerUtils';
 
+export type IngredientsType = 'base' | 'beverage' | 'liquor' | 'other';
+
 export type CheckListType = 'base' | 'beverage' | 'liquor';
 
 export type DrinksListState = { drinks: number[] };
@@ -52,7 +54,7 @@ export interface Recipe {
 
 export interface Ingredient {
   id: number;
-  ingredientType: string;
+  ingredientType: IngredientsType;
   ingredientAmountOZ: string;
   ingredientAmountML: string;
 }
